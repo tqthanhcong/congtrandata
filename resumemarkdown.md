@@ -10,7 +10,7 @@ published: true
 <!-- https://github.com/mikepqr/resume.md/blob/main/resume.md?plain=1 -->
 <!-- The (first) h1 will be used as the <title> of the HTML page -->
 # Tran Quang Thanh Cong
-#### Senior data analyst
+#### DA teamleader
 <!-- The paragraph after the h1 and ul and before the first h2 is optional. It
 is intended to be used for a short summary. -->
 Passionate Data Analyst with 5 years of experience working in analytics-related areas.
