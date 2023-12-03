@@ -3,18 +3,50 @@ layout: default_test
 background: '/img/bg-index.jpg'
 published: true
 ---
-.
+
+<style>
+	body {
+	  color: #666; /* Màu chữ của văn bản trong phần body */
+	}
+
+	h1 {
+	  color: #88304E;
+	  margin-top: 60px; /* Độ lề trên đầu cho tiêu đề h1 */
+	}
+
+	h2 {
+	  color: #88304E; /* Màu chữ của tiêu đề h2 */
+	  margin-top: 30px;
+	}
+
+	h3 {
+	  color: #0F4C75; /* Màu chữ của tiêu đề h3 */
+	}
+
+	h4 {
+	  color: #0F4C75; /* Màu chữ của tiêu đề h3 */
+	}
+
+	h5 {
+	  color: #3282B8; /* Màu chữ của tiêu đề h3 */
+	}
+
+	p {
+	  color: #666; /* Màu chữ của đoạn văn bản thông thường */
+	}
+
+</style>
 
 
-[Xem version màu sắc](/resume/)
+
+<!-- [Xem version màu sắc](/resume/) -->
 <!-- https://github.com/mikepqr/resume.md/blob/main/resume.md?plain=1 -->
 <!-- The (first) h1 will be used as the <title> of the HTML page -->
-# Tran Quang Thanh Cong
-#### DA teamleader
+# Cong Tran
+##### DA lead<br>
 <!-- The paragraph after the h1 and ul and before the first h2 is optional. It
 is intended to be used for a short summary. -->
-Passionate Data Analyst with 5 years of experience working in analytics-related areas.
-
+<!-- A Passionate Data Analyst. -->
 
 <!-- The unordered list immediately after the h1 will be formatted on a single
 line. It is intended to be used for contact details -->
@@ -22,12 +54,13 @@ line. It is intended to be used for contact details -->
 - [tqthanhcong.github.io](http://tqthanhcong.github.io)
 - Tp.HCM
  -->
-
 ## Experience
+
 
 <!-- You have to wrap the "left" and "right" half of these headings in spans by
 hand -->
-#### <span>Senior data analyst, MoMo e-wallet</span> <span>Jul 2021 -- present</span>
+#### <span>MoMo E-wallet, Jul 2021 - present</span>
+##### <span>Teamleader</span>
 
 - Build & manage strategic level reporting on business performance, product performance, user segmentation, growth potentials
 - Build & manage operational level dashboard for tracking and rapid identification of business anomalies: KPI performance change, user behavior change, promotion fraud
@@ -39,21 +72,24 @@ hand -->
 - Provide analytics training for team members within the marketing & sale team
 - Advanced SQL querying on Bigquery, advanced visualization on Data Studio, ETL process while optimizing data usage effectiveness
 
-#### <span>Balance sheet management specialist, OCB Bank</span> <span>Feb 2018 -- Jun 2021</span>
+#### <span>OCB Bank, Feb 2018 -- Jun 2021</span>
+##### <span>Financial Analst</span>
 
-- Build & manage strategic level reporting on business performance, product performance, user segmentation, growth potentials
 - Build dashboard and create analyses for monitoring assumptions and balance sheet activities (e.g. deposit balance flows, market interest rates, loan spreads, saving deposit rates, etc.).
 - Prepare reports in ALCO & Treasury meetings on balance sheet movements and drivers
 - Automate required & management reports with Excel, VBA, Power Pivot & Tableau tools
 - Analyze and forecast the impact of the government's monetary policy change on the bank
 - Research and host workshops about new technology (e.g. AI & Big data, governance cryptocurrencies) and its impact on banking to share with Treasury leaders
 
-#### <span>Loan officer, Techcombank</span> <span>Sep 2017 -- Jan 2018</span>
+#### <span>Techcombank, Sep 2017 -- Jan 2018</span>
+##### <span>Credit support officer</span>
 
 - Analyze customer financial reports and propose recommendations on customer credit limits
 - Perform corporate loan processing including communicating with borrowers, collecting and verifying documents, preparing, submitting & post-managing loan applications
 
-#### <span>Consulting assistant, I-Glocal Accounting Consulting Firm</span> <span>Jun 2017 -- Jul 2017</span>
+#### <span>I-Glocal Accounting Consulting Firm, Jun 2017 -- Jul 2017</span>
+##### <span>Consulting assistant</span>
+
 - Calculate personal income tax for Japanese clients
 
 

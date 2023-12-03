@@ -1,7 +1,7 @@
 #source: https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll
-title:              Blog về data của Công Trần
+title:              Blog về data
 email:              tranquangthanhcong@gmail.com
-description:        Mấy thứ về data analysis, data science, visualization, blah blah
+description:        Nơi chém gió của Công Trần
 author:             Cong Tran
 baseurl:            ""
 logo:               "/assets/logos/logo_dino.png" # Site logo, also used in jekyll-seo-tag

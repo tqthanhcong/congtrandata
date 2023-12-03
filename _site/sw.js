@@ -1,8 +1,8 @@
-const version = '20231202170504';
+const version = '20231203225440';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/2020/01/31/man-must-explore.html","/2020/01/31/heartbeats.html","/2020/01/30/prophecy.html","/2020/01/29/exploration.html","/2020/01/28/dreams.html","/2020/01/27/dinosaurs.html","/about.html","/contact.html","/resume/cv_james.html","/posts/","/resume/","/","/assets/main.css","/resumemarkdown.html","/resume/srt-resume.html","/feed.xml","/posts/page2/","/sitemap.xml","/robots.txt","/assets/main.css.map","/assets/logos/logo_dino.png", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/da/2023/12/03/da-bai-toan.html","/2020/01/31/man-must-explore.html","/categories/data-analysis","/ml/2020/01/30/prophecy.html","/da/2020/01/28/dreams.html","/ml/2020/01/27/dinosaurs.html","/about.html","/contact.html","/resume/cv_james.html","/posts/fn/","/posts/","/posts/skill/","/","/posts/ml/","/posts/da/","/resume/","/assets/main.css","/resumemarkdown.html","/resume/srt-resume.html","/feed.xml","/posts/page2/","/sitemap.xml","/robots.txt","/assets/main.css.map","/assets/logos/logo_dino.png", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 
