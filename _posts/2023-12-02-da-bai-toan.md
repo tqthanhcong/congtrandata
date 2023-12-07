@@ -7,27 +7,54 @@ background: '/img/posts/01.jpg'
 category: DA
 ---
 
-Thường thì các DA dùng data để giúp các team liên quan giải quyết vấn đề của riêng họ. Các vấn đề này thì có rất nhiều dạng khác nhau và mỗi vấn đề có những bối cảnh cụ thể khác nhau. Vấn đề là nếu mỗi lần gặp vấn đề cụ thể nào đó, DA lại ngồi suy nghĩ cách làm, phải ngồi gỡ thủ công lại các đoạn SQL, vẽ lại các chart mình vừa nghĩ ra Tuy nhiên nếu cố gắng tổng quát hoá lại thì có lẽ những bài toán mà DA giải quyết có thể được liệt kê ra thành một danh sách ngắn gọn.
+DA dùng data để giúp các team liên quan giải quyết vấn đề của riêng họ. Chúng có rất nhiều dạng khác nhau và mỗi case đều có những bối cảnh riêng. Nếu mỗi lần thực hiện phân tích, DA lại ngồi suy nghĩ cách làm, ngồi gõ thủ công lại các đoạn SQL, vẽ lại các chart mình vừa nghĩ ra thì thực sự khá mất công.
 
-Với mỗi bài toán đó chúng ta có thể đi tìm những phương pháp giải quyết hiệu quả, để rồi sau đó có thể lặp đi lặp lại quy trình phân tích dữ liệu nhằm giải quyết vấn đề một cách ít tốn sức nhất. Theo kinh nghiệm của tôi, dưới đây là các bài toán chung & điển hình mà DA thường gặp
+Vậy nên nếu cố gắng tổng quát hoá lại các bài toán DA thường giải và tìm ra phương pháp phù hợp để giải và thiết kế 1 hệ thống "bán auto" thì công việc chắc sẽ trơn tru hơn.
 
-## Mô tả các chủ thể
+![Demo Image](https://datasciencedojo.com/wp-content/uploads/16-995x1030.jpeg)
 
-Nghe giống như đề làm văn Hãy mô tả con vật mà em yêu thích. Đúng vậy!
+## Mô tả chủ thể
 
-Kiểu công việc này của DA chỉ đơn giản là làm các thống kê mô tả. 
-There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.
+Bài toán này thì cũng giống như đề bài tập làm văn mô tả ("Hãy mô tả con vật mà em yêu thích").
 
-> The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.
+![Demo Image](https://i.ytimg.com/vi/hwqpkljWdUw/maxresdefault.jpg)
 
-Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.
+Bài toán này thường diễn ra ở 2 trường hợp:
+- Hoặc stakeholder đang gặp vấn đề mới, sản phẩm mới và chưa biết gì nhiều, cần thông tin gì đó làm cơ sở để phát triển thêm kế hoạch và chiến lược
+- Hoặc stakeholder đã có những cách giải quyết vấn đề, chỉ cần những thông tin mô tả để lấp đầy vào chỗ trống trong plan
 
-## Reaching for the Stars
+Ví dụ: Marketing manager: Anh đã có kinh nghiệm trong việc tạo chương trình khuyến mãi cho user, anh đang cần biết user behavior của mình để áp dụng các kiến thức của mình để chạy chương trình tốt nhất. 
 
-As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.
+Đây chắc là bài toán dễ làm nhất, đối với dạng này, chúng ta cứ apply 2 bước:
+1. Thực hiện làm descriptive statistic cho các entity: mean, min, max, median, p25, p75, mod, distribution. Chẳng hạn trong ví dụ này là mô tả về tuổi, city, tần suất mua hàng của user
+2. Nhìn toàn bộ bảng thống kê và tóm tắt lại các điểm chính, điểm bất thường,... thường sẽ là: 
+- Data point có xu hướng tập trung về 1 khu vực 
+- Outlier
 
-![Demo Image](https://source.unsplash.com/Mn9Fa_wQH-M/800x450)
-*To go places and do things that have never been done before – that’s what living is all about.*
+
+### Tìm xu hướng đang nổi tự nhiên
+
+"Trend năm nay là trà chanh giã tay, không bắt kịp được là mất cơ hội"
+"Tuy nhóm khách hàng trẻ tuổi của chúng ta còn ít nhưng thị phần đang tăng rất nhanh, cần phải chú ý để có những sản phẩm phù hợp"
+
+Đó là những
+
+Một trong những công việc quan trọng khác của DA là phân tích xu hướng. Điều này có nghĩa là xác định xu hướng tăng trưởng, sự suy giảm, hoặc các mẫu hành vi theo thời gian. Phân tích này giúp cho các doanh nghiệp có thể dự đoán và điều chỉnh chiến lược kinh doanh của mình một cách hiệu quả.
+
+### Đo Lường Hiệu Suất
+
+Đo lường hiệu suất là việc đánh giá và so sánh hiệu suất của các chiến dịch, sản phẩm, hoặc dịch vụ. Nó không chỉ giúp xác định các yếu tố thành công, mà còn giúp nhận ra những điểm yếu cần cải thiện. Điều này đóng vai trò quan trọng trong việc tối ưu hóa nguồn lực và nâng cao hiệu quả hoạt động.
+
+### Phân tích Nguyên Nhân
+
+Khi một vấn đề xảy ra, việc tìm ra nguyên nhân gốc rễ là cực kỳ quan trọng. Phân tích nguyên nhân giúp DA xác định được điều gì đã dẫn đến một sự kiện hoặc một kết quả cụ thể. Việc này đòi hỏi sự hiểu biết sâu sắc về dữ liệu và khả năng phân tích tinh tế.
+
+### Tối Ưu Hoá Quy Trình
+
+Cuối cùng, DA cũng có trách nhiệm trong việc tối ưu hoá các quy trình làm việc. Điều này có nghĩa là tìm ra cách làm việc hiệu quả hơn, tiết kiệm thời gian và nguồn lực, đồng thời nâng cao chất lượng sản phẩm hoặc dịch vụ.
+
+Tóm lại, vai trò của DA không chỉ là làm việc với số liệu, mà còn là sử dụng thông tin đó để giúp các doanh nghiệp đưa ra quyết định chính xác và phát triển bền vững. Bằng cách tiếp cận các vấn đề một cách hệ thống và có phương pháp, DA có thể tạo ra giá trị lớn cho cả tổ chức và khách hàng của họ.
+
 
 Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.
 
