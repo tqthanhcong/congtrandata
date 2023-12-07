@@ -99,7 +99,7 @@ hand -->
 - Visualization: Dashboarding, reporting
 - Problem solving by using data
 
-## Technical
+## Tools
 - SQL, Python
 - Tableau, Power BI, Looker
 - Excel, Google sheet
