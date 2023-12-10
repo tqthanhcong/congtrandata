@@ -1,63 +1,111 @@
 ---
 layout: post
-title: "Tóm gọn các bài toán DA phải giải quyết"
-subtitle: "Liệt kê ngắn gọn và tổng quát các bài toán mà DA phải làm và những phương pháp phù hợp để giải quyết."
+title: "Các bài toán trong DA"
+subtitle: "Một cái nhìn tổng quát theo kinh nghiệm cá nhân về các bài toán mà DA thường gặp và cách giải quyết được tôi sử dụng"
 date: 2023-12-02 23:45:13 -0400
 background: '/img/posts/01.jpg'
 category: DA
 ---
 
-DA dùng data để giúp các team liên quan giải quyết vấn đề của riêng họ. Chúng có rất nhiều dạng khác nhau và mỗi case đều có những bối cảnh riêng. Nếu mỗi lần thực hiện phân tích, DA lại ngồi suy nghĩ cách làm, ngồi gõ thủ công lại các đoạn SQL, vẽ lại các chart mình vừa nghĩ ra thì thực sự khá mất công.
+DA dùng data để giúp các team liên quan giải quyết vấn đề của riêng họ, vốn tồn tại ở nhiều dạng khác nhau và mang những bối cảnh riêng. Nếu mỗi lần thực hiện phân tích, DA lại ngồi suy nghĩ cách làm, ngồi gõ thủ công lại các đoạn SQL, vẽ lại các chart mình vừa nghĩ ra thì thực sự khá mất công.
 
-Vậy nên nếu cố gắng tổng quát hoá lại các bài toán DA thường giải và tìm ra phương pháp phù hợp để giải và thiết kế 1 hệ thống "bán auto" thì công việc chắc sẽ trơn tru hơn.
+Lúc mới làm DA, tôi rất mong muốn tìm được một bí kíp nào đó tổng quát hoá lại các bài toán DA thường giải và nêu ra phương pháp giải quyết phù hợp để bản thân chỉ cần học và áp dụng cho nhanh. Trải qua một thời gian làm việc và học hỏi từ đồng nghiệp, tôi tự tạo cho mình một quy trình "công nghiệp hoá" để áp dụng vào công việc bản thân, tôi gọi nó là "Phương pháp DA"
 
-![Demo Image](https://datasciencedojo.com/wp-content/uploads/16-995x1030.jpeg)
+Phương pháp DA được tạo thành bằng cách vay mượn và tổng hợp các hệ thống trong các ngành data science, problem solving, thống kê, marketing và trải nghiệm của bản thân.
 
-## Mô tả chủ thể
+Đầu tiên chúng ta sẽ đi qua các bài toán mà DA thường gặp và cách làm, sau đó sẽ đến phần làm sao xác định được vấn đề mình đang gặp nằm ở nhóm nào để có phương án giải quyết phù hợp.
 
-Bài toán này thì cũng giống như đề bài tập làm văn mô tả ("Hãy mô tả con vật mà em yêu thích").
+<img src="https://datasciencedojo.com/wp-content/uploads/16-995x1030.jpeg" style="width:300px;"/>
 
-![Demo Image](https://i.ytimg.com/vi/hwqpkljWdUw/maxresdefault.jpg)
+### Mô tả
 
-Bài toán này thường diễn ra ở 2 trường hợp:
-- Hoặc stakeholder đang gặp vấn đề mới, sản phẩm mới và chưa biết gì nhiều, cần thông tin gì đó làm cơ sở để phát triển thêm kế hoạch và chiến lược
-- Hoặc stakeholder đã có những cách giải quyết vấn đề, chỉ cần những thông tin mô tả để lấp đầy vào chỗ trống trong plan
+3 công việc cần làm: mô tả thống kê, mô tả tương quan và segment, làm theo thứ tự cho tới khi giải quyết được vấn đề
 
-Ví dụ: Marketing manager: Anh đã có kinh nghiệm trong việc tạo chương trình khuyến mãi cho user, anh đang cần biết user behavior của mình để áp dụng các kiến thức của mình để chạy chương trình tốt nhất. 
+#### Mô tả thống kê
 
-Đây chắc là bài toán dễ làm nhất, đối với dạng này, chúng ta cứ apply 2 bước:
-1. Thực hiện làm descriptive statistic cho các entity: mean, min, max, median, p25, p75, mod, distribution. Chẳng hạn trong ví dụ này là mô tả về tuổi, city, tần suất mua hàng của user
-2. Nhìn toàn bộ bảng thống kê và tóm tắt lại các điểm chính, điểm bất thường,... thường sẽ là: 
-- Data point có xu hướng tập trung về 1 khu vực 
-- Outlier
+Bài toán này thì cũng giống như đề bài tập làm văn "Hãy mô tả con vật mà em yêu thích". Trong DA thì sẽ là hãy mô tả user behavior, hãy mô tả sản phẩm mới, hãy mô tả phản ứng của người dùng,..., tất nhiên là với các phiên bản diễn đạt khác nhau.
 
+<img src="https://i.ytimg.com/vi/hwqpkljWdUw/maxresdefault.jpg" style="width:300px;"/>
 
-### Tìm xu hướng đang nổi tự nhiên
+Ví dụ: Marketing manager: Anh đã có kinh nghiệm trong việc tạo chương trình khuyến mãi cho user, anh đang cần phân tích user behavior để áp dụng chương trình tốt nhất. 
 
-"Trend năm nay là trà chanh giã tay, không bắt kịp được là mất cơ hội"
-"Tuy nhóm khách hàng trẻ tuổi của chúng ta còn ít nhưng thị phần đang tăng rất nhanh, cần phải chú ý để có những sản phẩm phù hợp"
+DA chưa có kinh nghiệm để lạc vào cái bẫy đi query cho những câu hỏi nhỏ nhỏ như: Xem thử tần suất mua hàng bình quân khoảng bao nhiêu, ra kết quả thấp quá lại suy nghĩ query gì tiếp theo, chắc sẽ xem tuổi của user là bao nhiêu, user thích mua món hàng nào,... rồi trong lúc viết có đoạn nào sai thế là phải quay lại sửa sửa, viết xong câu này lại suy nghĩ tiếp query gì tiếp theo.
+Thay vào đó, hãy cứ thực hiện 3 bước:
 
-Đó là những
+1. Xác định các yếu tố cần mô tả, các yếu tố này chính là tập hợp những thứ tạo ra thực thể mà stakeholder đang quan tậm. Chẳng hạn với ví dụ trên, stakeholder quan tâm đến user behavior, vậy đây là các yếu tố tạo nên user behavior mà có thể đo lường được: demographic của user, tần suất mua hàng của user, mức chi tiêu của user, tỷ lệ phản ứng của user với chương trình khuyến mãi
 
-Một trong những công việc quan trọng khác của DA là phân tích xu hướng. Điều này có nghĩa là xác định xu hướng tăng trưởng, sự suy giảm, hoặc các mẫu hành vi theo thời gian. Phân tích này giúp cho các doanh nghiệp có thể dự đoán và điều chỉnh chiến lược kinh doanh của mình một cách hiệu quả.
+2. Thu thập data rồi thực hiện làm descriptive statistic cho các yếu tố ấy bằng tất cả các chỉ số nổi tiếng mà các nhà thống kê đã hướng dẫn chúng ta: mean, min, max, median, p25, p75, p10, p90, mod, skewness, kurtois, outlier, hoặc xem graph distribution
 
-### Đo Lường Hiệu Suất
+*[Đọc thêm: Các loại distribution](https://www.itl.nist.gov/div898/handbook/eda/section3/eda366.htm)*
 
-Đo lường hiệu suất là việc đánh giá và so sánh hiệu suất của các chiến dịch, sản phẩm, hoặc dịch vụ. Nó không chỉ giúp xác định các yếu tố thành công, mà còn giúp nhận ra những điểm yếu cần cải thiện. Điều này đóng vai trò quan trọng trong việc tối ưu hóa nguồn lực và nâng cao hiệu quả hoạt động.
-
-### Phân tích Nguyên Nhân
-
-Khi một vấn đề xảy ra, việc tìm ra nguyên nhân gốc rễ là cực kỳ quan trọng. Phân tích nguyên nhân giúp DA xác định được điều gì đã dẫn đến một sự kiện hoặc một kết quả cụ thể. Việc này đòi hỏi sự hiểu biết sâu sắc về dữ liệu và khả năng phân tích tinh tế.
-
-### Tối Ưu Hoá Quy Trình
-
-Cuối cùng, DA cũng có trách nhiệm trong việc tối ưu hoá các quy trình làm việc. Điều này có nghĩa là tìm ra cách làm việc hiệu quả hơn, tiết kiệm thời gian và nguồn lực, đồng thời nâng cao chất lượng sản phẩm hoặc dịch vụ.
-
-Tóm lại, vai trò của DA không chỉ là làm việc với số liệu, mà còn là sử dụng thông tin đó để giúp các doanh nghiệp đưa ra quyết định chính xác và phát triển bền vững. Bằng cách tiếp cận các vấn đề một cách hệ thống và có phương pháp, DA có thể tạo ra giá trị lớn cho cả tổ chức và khách hàng của họ.
+3. Sau bước 2 chúng ta có một loạt các chỉ số mô tả cho một loạt các yếu tố khác nhau. Tại đây, bằng tư duy logic, chúng ta quan sát các chỉ số này chọn lọc lại những mô tả nào có khả năng trả lời câu hỏi của stakeholder như thế nào. Chẳng hạn, với câu hỏi ví dụ, nhờ thống kê mô tả, DA trả lời được: "Khách hàng của chúng ta đa dạng ở nhiều lứa tuổi khác nhau, không thích chương trình khuyến mãi lắm vì thông thường chỉ có khoảng 2% khách hàng phản ứng với chương trình. Ngoài ra, hành vi mua hàng phân hoá khá mạnh, mặc dù 50% mua dưới 3 lần/tháng nhưng top 25% mua nhiều nhất lại mua trên 50 lần/tháng. Vì vậy chiến lược marketing lần này cần thiết kế phù hợp với đặc điểm này, ngoài ra chiến dịch cũng cần làm cho đa dạng với từng nhóm khách hàng khác nhau"
 
 
-Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.
+#### Mô tả tương quan
 
-As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.
+Nếu sau khi thống kê mô tả, câu hỏi của stakeholder chưa được giải quyết. Nếu trực giác mách bảo những kết luận ở phần mô tả thống kê còn hơi chung chung và cần kết nối nhiều yếu tố khác nhau, thì đó là lúc chúng ta cần phân tích sự tương quan. Thư viện python hỗ trợ rất tốt việc này. 
 
-Placeholder text by [Space Ipsum](http://spaceipsum.com/). Photographs by [Unsplash](https://unsplash.com/).
+Chỉ cần nhìn vào ma trận tương quan giữa các cặp yếu tố, chúng ta có thể đưa ra những kết luận chi tiết hơn, hỗ trợ giải quyết vấn đề của stakeholder, ví dụ: "...25% mua nhiều nhất lại mua trên 50 lần/tháng, là nhóm khách hàng trẻ tuổi, data chỉ ra khách hàng nào mua càng nhiều sản phẩm thì độ tuổi càng trẻ, khách hàng tần suất thấp thường là khách hàng lớn tuổi hơn. Vậy nên nếu anh muốn target vào nhóm khách hàng tần suất thấp thì cần tìm thông điệp nào phù hợp với người lớn tuổi hơn"
+
+#### Segmentation
+
+Cuối cùng, nếu vấn đề quá phức tạp, quá nhiều yếu tố cần phải mô tả, quá nhiều thứ để nhớ mà 2 bước trên không thể nào giúp trả lời ngắn gọn, dễ hiểu, hãy segment! Segment là việc chia các đối tượng vào các nhóm với đặc điểm tập trung hơn. Chẳng hạn như ở phần trên chúng ta có kết luận khách hàng đa dạng ở nhiều lứa tuổi, vậy hãy chia nhỏ họ để các nhóm có độ tuổi tập trung hơn.
+
+Cụ thể làm 3 bước:
+1. Chọn ra các yếu tố quan trọng để segemt
+2. Chọn kỹ thuật để segment bằng một trong các cách sau (hoặc kết hợp linh hoạt nhiều cách):
+- **Theo strategry của stakeholder**: hỏi stakeholder xem chiến lược của họ cần chia các nhóm khách hàng ra thành những nhóm như thế nào. Cách này chia dựa theo nhu cầu từ business, có thể là những cách chia đã được giảng dạy trong giáo trình quản trị nổi tiếng.
+- **Theo percentile**: Khách hàng nằm trong nhóm có độ tuổi thấp hơn trung bình & mua hàng nhiều nhất sẽ được chia vào 1 nhóm, nhóm có độ tuổi thấp hơn trung bình & mua hàng ít nhất được vào 1 nhóm,... cứ như vậy. Cách này khá hiệu quả và dễ hiểu nếu chúng ta segment dựa trên 2 yếu tố, các bí kíp về quản trị hay dùng cách này để tạo ra kim tứ đồ.
+- **Dùng K-mean**: Đây là một thuật toán để cluster everything, sử dụng khá nhẹ đầu chỉ là sẽ hơi khó để giải thích cho non-tech stakeholder
+3. Chạy lại các descritptive statistic cho mỗi segment.
+
+Đến bước này, dựa trên một hệ thống góc nhìn, chúng ta sẽ thực sự hiểu về data của mình. Chúng có thể được chia ra những nhóm nào, mỗi nhóm có đặc điểm gì. Cộng với tư duy logic để áp dụng cho từng trường hợp cụ thể, DA có thể trả lời và giải quyết được nhiều vấn đề của stakeholder
+
+Điều quan trọng là hãy lưu lại tất cả những script để mỗi lấn tính chỉ cần lấy áp số vào là ra kết quả, lặp đi lặp lại mà không cần tốn công. Đối với bài toán này, hãy chỉ dành công sức cho việc suy nghĩ cần mô tả "cái gì".
+
+### Tìm xu hướng
+
+Bài toán này thường phát sinh khi mọi người đang quan tâm đến sự thay đổi, thay đổi trong thị hiếu khách hàng, trong doanh số, trong thị trường,...
+
+Cần lưu ý là ở đây tôi không nhắc tới bài toán phân tích xu hướng rồi dự báo như một bài toán điển hình của data science, mà chỉ là một bài toán đơn giản hơn nhiều:
+
+*[Cái gì] (1)* đang *[tăng/giảm] (2)* và *[mạnh/yếu] (3)* thế nào?
+Nhiệm vụ của DA ở đây là lấp đầy các vị trí (1), (2), (3). Ví dụ: "Món trà chanh giã tay đang tăng tỷ lệ đặt hàng mạnh nhất trong tất cả sản phẩm" hay "Chi phí promotion đang giảm mạnh, nghi ngờ là một nguyên nhân làm doanh số tháng này giảm mạnh".
+Cách làm như sau:
+
+(2) [tăng/giảm]: Đối với DA, đơn giản là dùng mắt thường để xác định một xu hướng là tăng, giảm hay đi ngang. Nếu không xác định được bằng, có thể kết luận là "khó xác định".
+
+(3) [mạnh/yếu]: Một lần nữa chúng ta có thể dùng mắt thường, hoặc dùng các kỹ thuật như CARG để xác định.
+
+(1) [Cái gì]: Cái gì ở đây rất quan trọng. Như bạn biết, doanh thu cả công ty có thể đang tăng nhưng doanh thu của những sản phẩm cốt lõi đang giảm. Do đó, đối với các bài toán tìm xu hướng, DA sẽ cần hiểu mối quan tâm của stakeholder sau đó dùng kỹ thuật breakdown để phác hoạ được trend của những "cái gì" quan trọng. Chẳng hạn chia theo sản phẩm để tìm ra "Trà chanh giã tay" đang có trend cực kỳ mạnh, vốn không thể nhìn thấy khi phân tích trend của doanh số toàn cửa hàng.
+
+Lặp lại điều quan trọng là chúng ta cần lưu lại các script, các hệ thống hỗ trợ phân tích loại này để có thể dùng đi dùng lại một cách tiện lợi nhất. Cứ bài toán nào cần tìm xu hướng là lôi script ra, thay một vài thông số rồi chạy và xem kết quả.
+
+
+Chúng ta vừa đi qua 2 phần là mô tả và tìm xu hướng. Tôi nghĩ rằng đây là 2 bài toán cơ bản của DA. Bằng cách lưu script & thiết kế công cụ phù hợp để lặp đi lặp lại các kỹ thuật được liệt kê bên trên, tôi có câu trả lời cho khoảng 70% câu hỏi của stakeholder. Phần còn lại chỉ là vẽ chart để trình bày các câu trả lời ấy. Bài toán lớn nhất và khó nhất mà tôi gặp phải nằm ở phần sau
+
+### Suy luận nhân quả
+
+Có phải nhờ chiến lược mới mà khách hàng tháng vừa rồi mua hàng nhiều hơn không?... là dạng câu hỏi khó trả lời nhất trong DA. Chúng ta đang đến với mảnh đất của suy luận nhân quả
+
+Để suy luận nhân quả thành công, tức trả lời câu hỏi có phải "do **cái này như vậy** nên **cái kia mới như thế** hay không", chúng ta làm 1 trong 2 cách:
+1. Cách 1 (tiêu chuẩn vàng): kiểm soát ngẫu nhiên (AB testing): chia tập nghiên cứu thành 2 phần, 1 phần thử nghiệm, 1 phần giữ nguyên sau đó so sánh kết quả cuối cùng của 2 nhóm để xác định tác động thực sự của chiến lược quảng cáo.
+2. Cách 2 chỉ nên làm nếu không thực hiện được cách 1: Đó là sử dụng historical data để suy luận nhân quả. Với historical data, chúng ta lại có nhiều cách khác nhau để xử lý, như:
+- natural experimental
+- quasi-experimental
+- regression
+- ML model
+
+Nếu việc suy luận quá khó, chúng ta có thể chuyển qua chiến lược khác: Phân tích tương quan giữa các yếu tố và kết luận chúng có tương quan, việc có quan hệ nhân quả hay không cần các thử nghiệm để kiểm chứng.
+
+### Phân tích tương quan khi không thể suy luận nhân quả
+
+Đây là bài toán chúng ta thực hiện khi không có khả năng suy luận nhân quả. Cách đơn giản và công nghiệp nhất để làm đó là thực hiện linear regression với Y là "cái kia" còn X là tập hơn các biến giúp dự đoán được Y, bao gồm biến "cái này".
+Dựa vào mô hình hồi quy chúng ta có thể có cái nhìn sâu sắc hơn về tương quan giữa "cái này" với "cái kia" trong bối cảnh có xét tới các yếu tố liên quan.
+
+Nếu chúng không có tương quan, chúng cũng không có quan hệ nhân quả.
+Nếu chúng có tương quan, chúng có thể có quan hệ nhân quả hoặc không. Thời gian & những thử nghiệm sẽ trả lời tất cả.
+
+
+Trên đây là các bài toán mà tôi nghĩ là bao quát các vấn đề mà DA giải quyết. Tác dụng của việc tổng quát hoá này là DA có thể nhận ra có những quy trình chung thực sự có ích và có tác động lớn khi phân tích dữ liệu, từ đó, chẳng hạn như tôi, đã phải suy nghĩ cách viết script, lưu lại các câu code, tạo các hệ thống tự động sao cho có thể chạy các tính toán trên một cách ít tốn công nhất và có khả năng lặp đi lặp lại liên tục, để dành thời gian cho việc suy nghĩ các giải pháp sáng tạo, học hỏi & chia sẻ.
+
