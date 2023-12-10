@@ -88,6 +88,14 @@ Chúng ta vừa đi qua 2 phần là mô tả và tìm xu hướng. Tôi nghĩ r
 
 Có phải nhờ chiến lược mới mà khách hàng tháng vừa rồi mua hàng nhiều hơn không?... là dạng câu hỏi khó trả lời nhất trong DA. Chúng ta đang đến với mảnh đất của suy luận nhân quả
 
+Nhân quả là một dạng tương quan đặc biệt, không phải tương quan nào cũng là nhân quả
+Tương quan: người ta thấy rằng 2 hiện tượng thường xuất hiện cùng lúc (Tết đến là hoa mai nở, hoa mai nở là con nít được nhận lì xì)
+Nhân quả: do hiện tượng 1 mà mới dẫn tới hiện tượng 2 (Do thời tiết phù hợp cộng với đặc điểm sinh học mà hoa mai mới nở, do là ngày Tết nên người lớn lì xì con nít)
+
+Gọi suy luận nhân quả là khó bởi vì với những gì thể hiện trong data, bằng các kỹ thuật thông thường, chúng ta chỉ biết được thường khi đến Tết thì có hoa mai thôi chứ rất khó để xác nhận cái gì làm cho hoa mai nở. Có phải do Tết không? nếu dời ngày Tết thay vì là 1/1 âm lịch qua ngày 1/6 âm lịch thì hoa mai lúc đó có nở không? Rốt cuộc tại sao hoa mại lại nở?
+
+À thì đương nhiên là ai cũng biết câu trả lời nhưng đó là do chúng ta có kiến thức về tự nhiên và sinh học. Chứ lấy data phân tích lên bờ xuống ruộng cũng không dám chắc được câu trả lời, vì, một lần nữa, khả năng cao là data cũng chỉ có thể chỉ ra được là 2 chúng nó hay xuất hiện cùng với nhau mà thôi.
+
 Để suy luận nhân quả thành công, tức trả lời câu hỏi có phải "do **cái này như vậy** nên **cái kia mới như thế** hay không", chúng ta làm 1 trong 2 cách:
 1. Cách 1 (tiêu chuẩn vàng): kiểm soát ngẫu nhiên (AB testing): chia tập nghiên cứu thành 2 phần, 1 phần thử nghiệm, 1 phần giữ nguyên sau đó so sánh kết quả cuối cùng của 2 nhóm để xác định tác động thực sự của chiến lược quảng cáo.
 2. Cách 2 chỉ nên làm nếu không thực hiện được cách 1: Đó là sử dụng historical data để suy luận nhân quả. Với historical data, chúng ta lại có nhiều cách khác nhau để xử lý, như:
