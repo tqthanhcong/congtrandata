@@ -1,8 +1,8 @@
-const version = '20250419141020';
+const version = '20250419235306';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/da/2023/12/03/da-bai-toan.html","/2020/01/31/man-must-explore.html","/categories/data-analysis","/ml/2020/01/30/prophecy.html","/da/2020/01/28/dreams.html","/ml/2020/01/27/dinosaurs.html","/about.html","/contact.html","/resume/cv_james.html","/posts/fn/","/posts/","/posts/skill/","/","/posts/ml/","/posts/da/","/resume/","/assets/main.css","/resumemarkdown.html","/resume/srt-resume.html","/feed.xml","/posts/page2/","/sitemap.xml","/robots.txt","/assets/main.css.map","/assets/logos/logo_dino.png", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/2025/04/19/notebooks.html","/da/2023/12/03/da-bai-toan.html","/2020/01/31/man-must-explore.html","/categories/data-analysis","/ml/2020/01/30/prophecy.html","/da/2020/01/28/dreams.html","/ml/2020/01/27/dinosaurs.html","/about.html","/contact.html","/resume/cv_james.html","/posts/fn/","/posts/","/posts/skill/","/","/posts/ml/","/posts/da/","/resume/","/assets/main.css","/resumemarkdown.html","/resume/srt-resume.html","/feed.xml","/posts/page2/","/sitemap.xml","/robots.txt","/assets/main.css.map","/assets/logos/logo_dino.png", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 
