@@ -1,0 +1,1787 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Multivariate: using R to replace SPSS &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="prev" title="Markdown Files" href="markdown.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Multivariate: using R to replace SPSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/notebooks.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Multivariate: using R to replace SPSS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-setup">General setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function">function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-process-data">Import and process data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">import data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-and-report-in-table">Group and report in table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot">Plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">Hypothesis testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bivariate-association">Bivariate (association)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-square-test">chi-square test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test">t-test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quali-vs-quali">quali vs quali</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#anova">anova</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-analysis">Factor analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cronbach-alpha">Cronbach Alpha</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-model">Linear model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">normalization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="multivariate-using-r-to-replace-spss">
+<h1>Multivariate: using R to replace SPSS<a class="headerlink" href="#multivariate-using-r-to-replace-spss" title="Link to this heading">#</a></h1>
+<p>This notebook was created as part of my journey in a master’s class where the instructor used SPSS for multivariate analysis. Since I prefer not to use SPSS, I explored ways to perform the same analyses using R. My goal is to replicate all SPSS commands with R, and this notebook documents that process.</p>
+<p>This notebook will cover how to open and read SPSS files, conduct summaries for univariate and bivariate variables, and then delve into topics such as factor analysis, principal component analysis (PCA), discriminant analysis, regression, and clustering.</p>
+<section id="general-setup">
+<h2>General setup<a class="headerlink" href="#general-setup" title="Link to this heading">#</a></h2>
+<p>Jupyter Book will also embed your code blocks and output in your book.
+For example, here’s some sample Matplotlib code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># import libs</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">haven</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">knitr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">kableExtra</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sjPlot</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">sjlabelled</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">janitor</span><span class="p">)</span><span class="w"> </span><span class="c1"># for frequency summary</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tables</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">pivottabler</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">RColorBrewer</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">vcdExtra</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">stargazer</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">DescTools</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">labelled</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">psych</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Learn more about sjPlot with &#39;browseVignettes(&quot;sjPlot&quot;)&#39;.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Attaching core tidyverse packages</span> ─────────────────────────────── tidyverse 2.0.0 ──
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">dplyr    </span> 1.1.4     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr    </span> 2.1.5
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats  </span> 1.0.0     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr  </span> 1.5.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2  </span> 3.5.1     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble   </span> 3.2.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">lubridate</span> 1.9.4     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr    </span> 1.3.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr    </span> 1.0.2     
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Conflicts</span> ───────────────────────────────────────────────── tidyverse_conflicts() ──
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span>     masks <span class=" -Color -Color-Blue">stats</span>::filter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">group_rows()</span> masks <span class=" -Color -Color-Blue">kableExtra</span>::group_rows()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>        masks <span class=" -Color -Color-Blue">stats</span>::lag()
+<span class=" -Color -Color-Cyan">ℹ</span> Use the conflicted package (<span class=" -Color -Color-Blue">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘sjlabelled’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:forcats’:
+
+    as_factor
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:dplyr’:
+
+    as_label
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:ggplot2’:
+
+    as_label
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:haven’:
+
+    as_factor, read_sas, read_spss, read_stata, write_sas, zap_labels
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘janitor’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:stats’:
+
+    chisq.test, fisher.test
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: vcd
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: grid
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: gnm
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘vcdExtra’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:dplyr’:
+
+    summarise
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Please cite as: 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> R package version 5.2.3. https://CRAN.R-project.org/package=stargazer 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘DescTools’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:tables’:
+
+    Format
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘labelled’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:sjlabelled’:
+
+    copy_labels, remove_labels, to_character, to_factor, val_labels
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘psych’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:DescTools’:
+
+    AUC, ICC, SD
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:ggplot2’:
+
+    %+%, alpha
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># digit</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+
+<span class="c1"># ggplot</span>
+<span class="nf">theme_set</span><span class="p">(</span><span class="nf">theme_classic</span><span class="p">())</span>
+<span class="nf">update_geom_defaults</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;steelblue&#39;</span><span class="p">))</span>
+<span class="nf">theme_update</span><span class="p">(</span>
+<span class="w">    </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="p">)</span><span class="w"> </span><span class="c1"># Adjust the size as needed</span>
+<span class="p">)</span>
+
+<span class="c1"># Set default theme and color palette</span>
+<span class="nf">options</span><span class="p">(</span>
+<span class="w">    </span><span class="n">ggplot2.continuous.colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nf">scale_color_viridis_c</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">ggplot2.continuous.fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nf">scale_fill_viridis_c</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">ggplot2.discrete.colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nf">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Paired&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">ggplot2.discrete.fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nf">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Paired&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">kable.format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pandoc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">par.bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="function">
+<h3>function<a class="headerlink" href="#function" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to get label of a variable or multiple variables</span>
+<span class="n">u_get_label</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="p">){</span>
+<span class="w">  </span><span class="kr">if</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">var</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">){</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">attr</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="n">var</span><span class="p">]],</span><span class="w"> </span><span class="s">&#39;label&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">return</span><span class="p">(</span><span class="nf">sapply</span><span class="p">(</span><span class="n">var</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">attr</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="n">x</span><span class="p">]],</span><span class="w"> </span><span class="s">&#39;label&#39;</span><span class="p">)))</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1"># show and format table</span>
+<span class="n">u_show_table</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">font_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">dat</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">    </span><span class="nf">kbl</span><span class="p">(</span><span class="n">table.attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;style=&#39;width:auto; display:inline-block;&#39;&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">    </span><span class="nf">kable_styling</span><span class="p">(</span><span class="n">bootstrap_options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;striped&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hover&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;condensed&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;responsive&quot;</span><span class="p">),</span>
+<span class="w">                  </span><span class="n">font_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">font_size</span><span class="p">,</span><span class="w"> </span><span class="n">full_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="import-and-process-data">
+<h2>Import and process data<a class="headerlink" href="#import-and-process-data" title="Link to this heading">#</a></h2>
+<section id="import-data">
+<h3>import data<a class="headerlink" href="#import-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the dataset</span>
+<span class="n">dat_online</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_sav</span><span class="p">(</span><span class="s">&quot;/Users/macbook/Library/CloudStorage/GoogleDrive-tranquangthanhcong@gmail.com/My Drive/study/ueh master/multivariate/data/MUASONLINE.sav&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat_online</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 2 × 26</caption>
+<thead>
+	<tr><th scope=col>TT1</th><th scope=col>TT2</th><th scope=col>TT3</th><th scope=col>HH1</th><th scope=col>HH2</th><th scope=col>HH3</th><th scope=col>DV1</th><th scope=col>DV2</th><th scope=col>DV3</th><th scope=col>DV4</th><th scope=col>⋯</th><th scope=col>Nghe</th><th scope=col>Thu_nhap</th><th scope=col>Hoc_van</th><th scope=col>ctieums</th><th scope=col>X1</th><th scope=col>X3</th><th scope=col>Y</th><th scope=col>X2</th><th scope=col>CD_DH</th><th scope=col>chitieuMH</th></tr>
+	<tr><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5</td><td>5</td><td>5</td><td>2</td><td>4</td><td>4</td><td>5</td><td>5</td><td>5</td><td>5</td><td>⋯</td><td>1</td><td>3</td><td>2</td><td>0.5</td><td>5.0</td><td>3.33</td><td>4.92</td><td>5</td><td>1</td><td>1</td></tr>
+	<tr><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>3</td><td>3</td><td>3</td><td>4</td><td>⋯</td><td>1</td><td>2</td><td>2</td><td>1.0</td><td>3.4</td><td>4.00</td><td>3.80</td><td>4</td><td>1</td><td>2</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert value to factors (readable)</span>
+<span class="n">dat_fact_online</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as_label</span><span class="p">(</span><span class="n">dat_online</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">as_factor</span><span class="p">()</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat_fact_online</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 2 × 26</caption>
+<thead>
+	<tr><th scope=col>TT1</th><th scope=col>TT2</th><th scope=col>TT3</th><th scope=col>HH1</th><th scope=col>HH2</th><th scope=col>HH3</th><th scope=col>DV1</th><th scope=col>DV2</th><th scope=col>DV3</th><th scope=col>DV4</th><th scope=col>⋯</th><th scope=col>Nghe</th><th scope=col>Thu_nhap</th><th scope=col>Hoc_van</th><th scope=col>ctieums</th><th scope=col>X1</th><th scope=col>X3</th><th scope=col>Y</th><th scope=col>X2</th><th scope=col>CD_DH</th><th scope=col>chitieuMH</th></tr>
+	<tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>⋯</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Hoan toan dong y</td><td>Hoan toan dong y</td><td>Hoan toan dong y</td><td>Khong dong y</td><td>Dong y</td><td>Dong y</td><td>Hoan toan dong y</td><td>Hoan toan dong y</td><td>Hoan toan dong y</td><td>Hoan toan dong y</td><td>⋯</td><td>Van phong</td><td>15 tro len</td><td>cao dang-dai hoc</td><td>0.5</td><td>5  </td><td>3.33333333333333</td><td>4.91666666666667</td><td>5</td><td>cao dang-dai hoc</td><td>0.0-0.9</td></tr>
+	<tr><td>Dong y          </td><td>Dong y          </td><td>Dong y          </td><td>Dong y      </td><td>Dong y</td><td>Dong y</td><td>Khong co y kien </td><td>Khong co y kien </td><td>Khong co y kien </td><td>Dong y          </td><td>⋯</td><td>Van phong</td><td>10-14     </td><td>cao dang-dai hoc</td><td>1  </td><td>3.4</td><td>4               </td><td>3.8             </td><td>4</td><td>cao dang-dai hoc</td><td>1.0-1.9</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># view dictionary of variables</span>
+<span class="nf">map</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">dat_online</span><span class="p">),</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">setNames</span><span class="p">(</span><span class="nf">u_get_label</span><span class="p">(</span><span class="n">dat_online</span><span class="p">,</span><span class="w"> </span><span class="n">.x</span><span class="p">),</span><span class="w"> </span><span class="n">.x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol>
+	<li><strong>TT1:</strong> 'mua hang truc tuyen hoat dong 24h nen co the mua vao bat cu luc nao'</li>
+	<li><strong>TT2:</strong> 'mua hang truc tuyen giup tiet kiem thoi gian'</li>
+	<li><strong>TT3:</strong> 'cach thuc mua va thanh toan de dang'</li>
+	<li><strong>HH1:</strong> 'san pham phu hop voi so tien ma toi tra'</li>
+	<li><strong>HH2:</strong> 'san pham phong phu'</li>
+	<li><strong>HH3:</strong> 'san pham dam bao chat luong nhu thong tin cung cap tren web'</li>
+	<li><strong>DV1:</strong> 'nhan vien vui ve giai dap thac mac cua khach hang'</li>
+	<li><strong>DV2:</strong> 'nhan vien luon ho tro khi khach hang can'</li>
+	<li><strong>DV3:</strong> 'nhan vien luon giup do khach hang tan tinh'</li>
+	<li><strong>DV4:</strong> 'khi mua sam online hang hoa duoc giao tan noi'</li>
+	<li><strong>DV5:</strong> 'hang hoa duoc giao dung thoi han'</li>
+	<li><strong>HL1:</strong> 'nhung nguoi xung quanh toi cung co nhung nhan xet tich cuc ve mua sam online'</li>
+	<li><strong>HL2:</strong> 'nhung nhan xet tich cuc tren cac dien dan truc tuyen anh huong den quyet dinh mua hang cua toi'</li>
+	<li><strong>HL3:</strong> 'toi se gioi thieu nguoi quen nen mua sam truc tuyen vi nhung tien ich cua no'</li>
+	<li><strong>GT1:</strong> 'gioi tinh'</li>
+	<li><strong>Tuoi:</strong> 'tuoi'</li>
+	<li><strong>Nghe:</strong> 'nghe nghiep'</li>
+	<li><strong>Thu_nhap:</strong> 'thu nhap'</li>
+	<li><strong>Hoc_van:</strong> 'hoc van'</li>
+	<li><strong>ctieums:</strong> 'chi tieu mua sam online hang thang'</li>
+	<li><strong>X1:</strong> 'dv khach hang'</li>
+	<li><strong>X3:</strong> 'hang hoa'</li>
+	<li><strong>Y:</strong> 'hai long mua sam online'</li>
+	<li><strong>X2:</strong> 'thuan tien'</li>
+	<li><strong>CD_DH:</strong> 'cao dang-dai hoc'</li>
+	<li><strong>chitieuMH:</strong> 'chi tieu ma hoa'</li>
+</ol>
+</div></div>
+</div>
+<p>So, we load the data .sav successfully and ready for next step</p>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>In this session we will use R to view summary about our data and do some descriptive analysis</p>
+<section id="group-and-report-in-table">
+<h3>Group and report in table<a class="headerlink" href="#group-and-report-in-table" title="Link to this heading">#</a></h3>
+<p><strong>1 dimension</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat_fact_online</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">tabyl</span><span class="p">(</span><span class="s">&#39;TT1&#39;</span><span class="p">)</span><span class="w">  </span><span class="o">%&gt;%</span>
+<span class="w">    </span><span class="nf">adorn_pct_formatting</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tabyl: 5 × 3</caption>
+<thead>
+	<tr><th scope=col>TT1</th><th scope=col>n</th><th scope=col>percent</th></tr>
+	<tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Hoan toan khong dong y</td><td>  0</td><td>0.0% </td></tr>
+	<tr><td>Khong dong y          </td><td>  0</td><td>0.0% </td></tr>
+	<tr><td>Khong co y kien       </td><td>  5</td><td>1.9% </td></tr>
+	<tr><td>Dong y                </td><td>151</td><td>58.8%</td></tr>
+	<tr><td>Hoan toan dong y      </td><td>101</td><td>39.3%</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat_fact_online</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">tabyl</span><span class="p">(</span><span class="s">&#39;Hoc_van&#39;</span><span class="p">)</span><span class="w">  </span><span class="o">%&gt;%</span>
+<span class="w">    </span><span class="nf">adorn_pct_formatting</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tabyl: 3 × 3</caption>
+<thead>
+	<tr><th scope=col>Hoc_van</th><th scope=col>n</th><th scope=col>percent</th></tr>
+	<tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>pho thong trung hoc</td><td>102</td><td>39.7%</td></tr>
+	<tr><td>cao dang-dai hoc   </td><td>139</td><td>54.1%</td></tr>
+	<tr><td>tren dai hoc       </td><td> 16</td><td>6.2% </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p><strong>2 dimension</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">table</span><span class="p">(</span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">Thu_nhap</span><span class="p">,</span><span class="w"> </span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">Hoc_van</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            
+             pho thong trung hoc cao dang-dai hoc tren dai hoc
+  duoi 10                     29               11            0
+  10-14                       42               55           10
+  15 tro len                  31               73            6
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>3 dimension</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ftable</span><span class="p">(</span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">GT1</span><span class="p">,</span><span class="w"> </span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">Hoc_van</span><span class="p">,</span><span class="w"> </span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">Thu_nhap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                         duoi 10 10-14 15 tro len
+                                                 
+Nam pho thong trung hoc        4     7          6
+    cao dang-dai hoc           0     7         11
+    tren dai hoc               0     2          1
+Nu  pho thong trung hoc       25    35         25
+    cao dang-dai hoc          11    48         62
+    tren dai hoc               0     8          5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="correlation">
+<h3>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">dat_fact_online</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 2 × 26</caption>
+<thead>
+	<tr><th scope=col>TT1</th><th scope=col>TT2</th><th scope=col>TT3</th><th scope=col>HH1</th><th scope=col>HH2</th><th scope=col>HH3</th><th scope=col>DV1</th><th scope=col>DV2</th><th scope=col>DV3</th><th scope=col>DV4</th><th scope=col>⋯</th><th scope=col>Nghe</th><th scope=col>Thu_nhap</th><th scope=col>Hoc_van</th><th scope=col>ctieums</th><th scope=col>X1</th><th scope=col>X3</th><th scope=col>Y</th><th scope=col>X2</th><th scope=col>CD_DH</th><th scope=col>chitieuMH</th></tr>
+	<tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>⋯</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Hoan toan dong y</td><td>Hoan toan dong y</td><td>Hoan toan dong y</td><td>Khong dong y</td><td>Dong y</td><td>Dong y</td><td>Hoan toan dong y</td><td>Hoan toan dong y</td><td>Hoan toan dong y</td><td>Hoan toan dong y</td><td>⋯</td><td>Van phong</td><td>15 tro len</td><td>cao dang-dai hoc</td><td>0.5</td><td>5  </td><td>3.33333333333333</td><td>4.91666666666667</td><td>5</td><td>cao dang-dai hoc</td><td>0.0-0.9</td></tr>
+	<tr><td>Dong y          </td><td>Dong y          </td><td>Dong y          </td><td>Dong y      </td><td>Dong y</td><td>Dong y</td><td>Khong co y kien </td><td>Khong co y kien </td><td>Khong co y kien </td><td>Dong y          </td><td>⋯</td><td>Van phong</td><td>10-14     </td><td>cao dang-dai hoc</td><td>1  </td><td>3.4</td><td>4               </td><td>3.8             </td><td>4</td><td>cao dang-dai hoc</td><td>1.0-1.9</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat_online</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="w"> </span><span class="n">X2</span><span class="p">,</span><span class="w"> </span><span class="n">X3</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">cor</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">kable</span><span class="p">(</span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;pandoc&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        X1     X2     X3      Y
+---  -----  -----  -----  -----
+X1    1.00   0.37   0.04   0.89
+X2    0.37   1.00   0.03   0.63
+X3    0.04   0.03   1.00   0.01
+Y     0.89   0.63   0.01   1.00
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot">
+<h3>Plot<a class="headerlink" href="#plot" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># frequency bar chart</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat_fact_online</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hoc_van</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">geom_text</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">..count..</span><span class="p">),</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;count&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">position_stack</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="m">1.05</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_classic</span><span class="p">()</span><span class="w"> </span><span class="c1"># Adjust global text size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“The dot-dot notation (`..count..`) was deprecated in ggplot2 3.4.0.
+<span class=" -Color -Color-Cyan">ℹ</span> Please use `after_stat(count)` instead.”
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/7b73f09e8e1921df9c02c71447f24315635b3562598ca8ef9dac72ef0bbf4682.png"><img alt="_images/7b73f09e8e1921df9c02c71447f24315635b3562598ca8ef9dac72ef0bbf4682.png" src="_images/7b73f09e8e1921df9c02c71447f24315635b3562598ca8ef9dac72ef0bbf4682.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># stacked bar chart</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat_fact_online</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hoc_van</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">GT1</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_text</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">..count..</span><span class="p">),</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;count&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">position_stack</span><span class="p">(</span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/1b2499c5838f1b9140b3e59b92de1b9820b6c4970a7d547efc5d69b7881f4f53.png"><img alt="_images/1b2499c5838f1b9140b3e59b92de1b9820b6c4970a7d547efc5d69b7881f4f53.png" src="_images/1b2499c5838f1b9140b3e59b92de1b9820b6c4970a7d547efc5d69b7881f4f53.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># histogram</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">dat_online</span><span class="o">$</span><span class="n">ctieums</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/abca20e73d22f77fa05739f230f2b2161ffab24239613bc5eb092f5a5a4930ad.png"><img alt="_images/abca20e73d22f77fa05739f230f2b2161ffab24239613bc5eb092f5a5a4930ad.png" src="_images/abca20e73d22f77fa05739f230f2b2161ffab24239613bc5eb092f5a5a4930ad.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># histogram by ggplot2</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat_online</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctieums</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">  </span><span class="nf">geom_histogram</span><span class="p">(</span><span class="n">binwidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s">&#39;gray&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">stat_function</span><span class="p">(</span><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">dnorm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">dat_online</span><span class="o">$</span><span class="n">ctieums</span><span class="p">),</span><span class="w"> </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sd</span><span class="p">(</span><span class="n">dat_online</span><span class="o">$</span><span class="n">ctieums</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">dat_online</span><span class="o">$</span><span class="n">ctieums</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_classic</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/249f42ab773d8d82e6d29ebd7262fd5cee2c0d3d52a3ae75d661865ff2013c90.png"><img alt="_images/249f42ab773d8d82e6d29ebd7262fd5cee2c0d3d52a3ae75d661865ff2013c90.png" src="_images/249f42ab773d8d82e6d29ebd7262fd5cee2c0d3d52a3ae75d661865ff2013c90.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># digit</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+
+<span class="c1"># ggplot</span>
+<span class="nf">theme_set</span><span class="p">(</span><span class="nf">theme_classic</span><span class="p">())</span>
+<span class="nf">update_geom_defaults</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;steelblue&#39;</span><span class="p">))</span>
+
+<span class="c1"># Set default theme and color palette</span>
+<span class="nf">options</span><span class="p">(</span>
+<span class="w">    </span><span class="n">ggplot2.continuous.colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nf">scale_color_viridis_c</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">ggplot2.continuous.fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nf">scale_fill_viridis_c</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">ggplot2.discrete.colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nf">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Paired&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">ggplot2.discrete.fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="nf">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Paired&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Set default background color for plots</span>
+<span class="nf">par</span><span class="p">(</span><span class="n">bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># boxplot</span>
+<span class="nf">par</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+<span class="nf">boxplot</span><span class="p">(</span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">ctieums</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">GT1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/df02f6f3bdf6bd1465a512ff5a403359c2f494dacff96e3dd4e1ecec005481d8.png"><img alt="_images/df02f6f3bdf6bd1465a512ff5a403359c2f494dacff96e3dd4e1ecec005481d8.png" src="_images/df02f6f3bdf6bd1465a512ff5a403359c2f494dacff96e3dd4e1ecec005481d8.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+</section>
+</section>
+<section id="hypothesis-testing">
+<h2>Hypothesis testing<a class="headerlink" href="#hypothesis-testing" title="Link to this heading">#</a></h2>
+<section id="bivariate-association">
+<h3>Bivariate (association)<a class="headerlink" href="#bivariate-association" title="Link to this heading">#</a></h3>
+<section id="chi-square-test">
+<h4>chi-square test<a class="headerlink" href="#chi-square-test" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crosstabs</span>
+<span class="n">table</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">table</span><span class="p">(</span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">Hoc_van</span><span class="p">,</span><span class="w"> </span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">Thu_nhap</span><span class="p">)</span>
+
+<span class="c1"># Chi-square test</span>
+<span class="n">chisq_test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">chisq.test</span><span class="p">(</span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="n">simulate.p.value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="c1"># Phi and Cramer&#39;s V</span>
+<span class="n">phi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="n">chisq_test</span><span class="o">$</span><span class="n">statistic</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">table</span><span class="p">))</span>
+<span class="n">cramers_v</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="n">chisq_test</span><span class="o">$</span><span class="n">statistic</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">table</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="nf">dim</span><span class="p">(</span><span class="n">table</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)))</span>
+
+<span class="c1"># Display results</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;Table:&#39;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">chisq_test</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;phi =&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">phi</span><span class="p">,</span><span class="s">&#39;\n&#39;</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;cramers_v =&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">cramers_v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Table:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     
+                      duoi 10 10-14 15 tro len
+  pho thong trung hoc      29    42         31
+  cao dang-dai hoc         11    55         73
+  tren dai hoc              0    10          6
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	Pearson&#39;s Chi-squared test with simulated p-value (based on 2000
+	replicates)
+
+data:  table
+X-squared = 27.229364, df = NA, p-value = 0.0004997501
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>phi = 0.326 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cramers_v = 0.23
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gamma</span>
+<span class="n">gamma_result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">GoodmanKruskalGamma</span><span class="p">(</span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">Hoc_van</span><span class="p">,</span><span class="w"> </span><span class="n">dat_fact_online</span><span class="o">$</span><span class="n">Thu_nhap</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;gamma:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">gamma_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gamma: 0.386
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kendall&#39;s tau</span>
+<span class="n">kendall_result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cor</span><span class="p">(</span><span class="n">dat_online</span><span class="o">$</span><span class="n">Hoc_van</span><span class="p">,</span><span class="w"> </span><span class="n">dat_online</span><span class="o">$</span><span class="n">Thu_nhap</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;kendall&quot;</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&#39;\nkendall:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">kendall_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kendall: 0.232
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="t-test">
+<h4>t-test<a class="headerlink" href="#t-test" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># t-test</span>
+<span class="n">t_test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">t.test</span><span class="p">(</span><span class="n">dat_online</span><span class="o">$</span><span class="n">ctieums</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">dat_online</span><span class="o">$</span><span class="n">GT1</span><span class="p">)</span>
+<span class="nf">print.listof</span><span class="p">(</span><span class="n">t_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>statistic :
+    t 
+0.122 
+
+parameter :
+  df 
+53.1 
+
+p.value :
+[1] 0.903
+
+conf.int :
+[1] -0.303  0.342
+attr(,&quot;conf.level&quot;)
+[1] 0.95
+
+estimate :
+mean in group 1 mean in group 2 
+           1.71            1.69 
+
+null.value :
+difference in means between group 1 and group 2 
+                                              0 
+
+stderr :
+[1] 0.161
+
+alternative :
+[1] &quot;two.sided&quot;
+
+method :
+[1] &quot;Welch Two Sample t-test&quot;
+
+data.name :
+[1] &quot;dat_online$ctieums by dat_online$GT1&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="quali-vs-quali">
+<h4>quali vs quali<a class="headerlink" href="#quali-vs-quali" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pearson_test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cor.test</span><span class="p">(</span><span class="n">dat_online</span><span class="o">$</span><span class="n">ctieums</span><span class="p">,</span><span class="w"> </span><span class="n">dat_online</span><span class="o">$</span><span class="n">X1</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pearson&quot;</span><span class="p">)</span>
+<span class="nf">print.listof</span><span class="p">(</span><span class="n">pearson_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>statistic :
+   t 
+1.11 
+
+parameter :
+ df 
+255 
+
+p.value :
+[1] 0.267
+
+estimate :
+   cor 
+0.0696 
+
+null.value :
+correlation 
+          0 
+
+alternative :
+[1] &quot;two.sided&quot;
+
+method :
+[1] &quot;Pearson&#39;s product-moment correlation&quot;
+
+data.name :
+[1] &quot;dat_online$ctieums and dat_online$X1&quot;
+
+conf.int :
+[1] -0.0533  0.1903
+attr(,&quot;conf.level&quot;)
+[1] 0.95
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="anova">
+<h4>anova<a class="headerlink" href="#anova" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># One-way ANOVA</span>
+<span class="n">anova_result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">aov</span><span class="p">(</span><span class="n">ctieums</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Hoc_van</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat_online</span><span class="p">)</span>
+
+<span class="c1"># Summary of the ANOVA</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">anova_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             Df Sum Sq Mean Sq F value Pr(&gt;F)
+Hoc_van       1    2.3   2.281    2.48   0.12
+Residuals   255  235.0   0.921               
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Welch&#39;s ANOVA</span>
+<span class="n">welch_anova</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">oneway.test</span><span class="p">(</span><span class="n">ctieums</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">Hoc_van</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat_online</span><span class="p">,</span><span class="w"> </span><span class="n">var.equal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="c1"># Display results</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">welch_anova</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	One-way analysis of means (not assuming equal variances)
+
+data:  ctieums and Hoc_van
+F = 2, num df = 2, denom df = 43, p-value = 0.2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="factor-analysis">
+<h2>Factor analysis<a class="headerlink" href="#factor-analysis" title="Link to this heading">#</a></h2>
+<section id="cronbach-alpha">
+<h3>Cronbach Alpha<a class="headerlink" href="#cronbach-alpha" title="Link to this heading">#</a></h3>
+<p>Cronbach’s Alpha is a measure of internal consistency, which assesses how closely related a set of items are as a group. It is commonly used to evaluate the reliability of a scale or questionnaire. A higher Cronbach’s Alpha value (typically above 0.7) indicates better reliability. In the next step, we will calculate Cronbach’s Alpha for selected variables in our dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># cronbach alpha: to evaluate variable</span>
+<span class="n">items</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat_online</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;TT1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TT2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TT3&quot;</span><span class="p">)]</span>
+<span class="n">labels</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">var_label</span><span class="p">(</span><span class="n">dat_online</span><span class="p">)</span>
+<span class="n">alpha_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">alpha</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="nf">kable</span><span class="p">(</span><span class="n">alpha_results</span><span class="o">$</span><span class="n">total</span><span class="p">,</span><span class="n">booktabs</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|   | raw_alpha| std.alpha| G6(smc)| average_r|  S/N|  ase| mean|    sd| median_r|
+|:--|---------:|---------:|-------:|---------:|----:|----:|----:|-----:|--------:|
+|   |     0.908|     0.908|   0.877|     0.767| 9.89| 0.01|  4.4| 0.486|    0.737|
+</pre></div>
+</div>
+</div>
+</div>
+<p>The reliability of the scale is high, with a Cronbach’s Alpha of 0.908, indicating strong internal consistency. The average item correlation is 0.767, reflecting strong relationships among the items. Additionally, the measurement quality is reliable, with a signal-to-noise ratio (S/N) of 9.89.</p>
+<p>To evaluate the impact of individual items on the reliability of the scale, the following code is used:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">alpha_drop</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">alpha_results</span><span class="o">$</span><span class="n">alpha.drop</span><span class="p">)</span>
+<span class="nf">row.names</span><span class="p">(</span><span class="n">alpha_drop</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">labels</span><span class="p">[</span><span class="nf">names</span><span class="p">(</span><span class="n">items</span><span class="p">)]</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">alpha_drop</span><span class="o">$</span><span class="n">raw_alpha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 0.917 0.836 0.848
+</pre></div>
+</div>
+</div>
+</div>
+<p>So it imply that we can group TT1, TT2, TT3 into 1 group.
+Next, we will example if we can group TT1, HH1 and DV1 into 1 group</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># cronbach alpha: to evaluate variable</span>
+<span class="n">items</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat_online</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;TT1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HH1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV1&quot;</span><span class="p">)]</span>
+<span class="n">labels</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">var_label</span><span class="p">(</span><span class="n">dat_online</span><span class="p">)</span>
+<span class="n">alpha_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">alpha</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">&#39;Total:&#39;</span><span class="p">)</span>
+<span class="nf">kable</span><span class="p">(</span><span class="n">alpha_results</span><span class="o">$</span><span class="n">total</span><span class="p">,</span><span class="n">booktabs</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#39;Drop:&#39;</span><span class="p">)</span>
+<span class="nf">kable</span><span class="p">(</span><span class="n">alpha_results</span><span class="o">$</span><span class="n">alpha.drop</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Total:&quot;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|   | raw_alpha| std.alpha| G6(smc)| average_r|   S/N|  ase| mean|    sd| median_r|
+|:--|---------:|---------:|-------:|---------:|-----:|----:|----:|-----:|--------:|
+|   |     0.276|     0.333|   0.299|     0.143| 0.499| 0.08| 3.98| 0.409|    0.059|
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Drop:&quot;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|    | raw_alpha| std.alpha| G6(smc)| average_r|    S/N| alpha se| var.r|  med.r|
+|:---|---------:|---------:|-------:|---------:|------:|--------:|-----:|------:|
+|TT1 |     0.107|     0.111|   0.059|     0.059|  0.125|    0.107|    NA|  0.059|
+|HH1 |     0.547|     0.550|   0.379|     0.379|  1.220|    0.056|    NA|  0.379|
+|DV1 |    -0.018|    -0.019|  -0.010|    -0.010| -0.019|    0.117|    NA| -0.010|
+</pre></div>
+</div>
+</div>
+</div>
+<p>No, the raw_alpha is so low, we better keep 3 column separate instead of grouping them</p>
+</section>
+<section id="pca">
+<h3>PCA<a class="headerlink" href="#pca" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">psych</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">knitr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">kableExtra</span><span class="p">)</span>
+
+<span class="c1"># Select relevant columns</span>
+<span class="n">items</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat_online</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;TT1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TT2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TT3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HH1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HH2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HH3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV5&quot;</span><span class="p">)]</span>
+
+<span class="c1"># Get variable labels if available</span>
+<span class="n">labels</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">var_label</span><span class="p">(</span><span class="n">dat_online</span><span class="p">)[</span><span class="nf">names</span><span class="p">(</span><span class="n">items</span><span class="p">)]</span>
+<span class="kr">if</span><span class="p">(</span><span class="nf">all</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span><span class="w"> </span><span class="n">labels</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+<span class="c1"># Determine factors (eigenvalues &gt; 1)</span>
+<span class="n">pca_scree</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">principal</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">nfactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ncol</span><span class="p">(</span><span class="n">items</span><span class="p">),</span><span class="w"> </span><span class="n">rotate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;none&quot;</span><span class="p">)</span>
+<span class="n">num_factors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">pca_scree</span><span class="o">$</span><span class="n">values</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+
+<span class="c1"># Run PCA with varimax rotation</span>
+<span class="n">pca_rotated</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">principal</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">nfactors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num_factors</span><span class="p">,</span><span class="w"> </span><span class="n">rotate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;varimax&quot;</span><span class="p">)</span>
+<span class="n">rotated_loadings</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">unclass</span><span class="p">(</span><span class="n">pca_rotated</span><span class="o">$</span><span class="n">loadings</span><span class="p">))</span>
+<span class="nf">row.names</span><span class="p">(</span><span class="n">rotated_loadings</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">labels</span>
+
+<span class="c1"># Create matrix with only primary factors</span>
+<span class="n">rotated_matrix_primary</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rotated_loadings</span>
+<span class="n">rotated_matrix_primary</span><span class="p">[]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="kr">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">rotated_loadings</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">max_col</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">which.max</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">rotated_loadings</span><span class="p">[</span><span class="n">i</span><span class="p">,])))</span>
+<span class="w">  </span><span class="n">rotated_matrix_primary</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">max_col</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">rotated_loadings</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">max_col</span><span class="p">]),</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Print the rotated component matrix</span>
+<span class="nf">kable</span><span class="p">(</span><span class="n">rotated_matrix_primary</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;pandoc&#39;</span><span class="p">)</span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                      RC1     RC3     RC2   
+--------------------------------------------------------------------  ------  ------  ------
+mua hang truc tuyen hoat dong 24h nen co the mua vao bat cu luc nao           0.859         
+mua hang truc tuyen giup tiet kiem thoi gian                                  0.921         
+cach thuc mua va thanh toan de dang                                           0.92          
+san pham phu hop voi so tien ma toi tra                                               0.895 
+san pham phong phu                                                                    0.816 
+san pham dam bao chat luong nhu thong tin cung cap tren web                           0.952 
+nhan vien vui ve giai dap thac mac cua khach hang                     0.805                 
+nhan vien luon ho tro khi khach hang can                              0.83                  
+nhan vien luon giup do khach hang tan tinh                            0.755                 
+khi mua sam online hang hoa duoc giao tan noi                         0.752                 
+hang hoa duoc giao dung thoi han                                      0.776                 
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the PCA output, we can see that all of our column can fall under 3 factors:</p>
+<ul class="simple">
+<li><p><strong>Factor 1</strong>: Represents customer service quality, with high loadings on variables related to staff support and delivery reliability.</p></li>
+<li><p><strong>Factor 2</strong>: Reflects convenience and time-saving aspects of online shopping.</p></li>
+<li><p><strong>Factor 3</strong>: Captures product-related attributes, such as quality, variety, and value for money.</p></li>
+</ul>
+<p>These factors provide a clear structure for understanding customer perceptions and can guide targeted improvements in online shopping experiences.</p>
+<p>In the earlier PCA, we use 3 factors. But how we can find out 3 is the best number? We can plot a scree chart, it show the eigenvalues of the factors in descending order. The “elbow” point in the scree plot indicates the optimal number of factors to retain, as it represents the point where the eigenvalues start to level off. Then we choose 1 for threshold as a rule of thumb</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">scree_plot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1"># Run PCA</span>
+<span class="w">  </span><span class="n">pca_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">prcomp</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">scale.</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Extract eigenvalues</span>
+<span class="w">  </span><span class="n">eigenvalues</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pca_results</span><span class="o">$</span><span class="n">sdev</span><span class="o">^</span><span class="m">2</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Calculate variance explained</span>
+<span class="w">  </span><span class="n">var_explained</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">eigenvalues</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Create data frame for plotting</span>
+<span class="w">  </span><span class="n">plot_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">eigenvalues</span><span class="p">),</span>
+<span class="w">    </span><span class="n">Eigenvalue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eigenvalues</span><span class="p">,</span>
+<span class="w">    </span><span class="n">Variance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">var_explained</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Plot scree plot</span>
+<span class="w">  </span><span class="nf">plot</span><span class="p">(</span><span class="n">plot_data</span><span class="o">$</span><span class="n">Component</span><span class="p">,</span><span class="w"> </span><span class="n">plot_data</span><span class="o">$</span><span class="n">Eigenvalue</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Component Number&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Eigenvalue&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Scree Plot&quot;</span><span class="p">)</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Add horizontal line at eigenvalue = 1</span>
+<span class="w">  </span><span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Usage</span>
+<span class="nf">par</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">items</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat_online</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;TT1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TT2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TT3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HH1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HH2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HH3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DV5&quot;</span><span class="p">)]</span>
+<span class="nf">scree_plot</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/ef94643473682bb34983263af7b028274935cee7f66c89bb7de9b6b760d9b555.png"><img alt="_images/ef94643473682bb34983263af7b028274935cee7f66c89bb7de9b6b760d9b555.png" src="_images/ef94643473682bb34983263af7b028274935cee7f66c89bb7de9b6b760d9b555.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+</section>
+</section>
+<section id="regression">
+<h2>Regression<a class="headerlink" href="#regression" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the dataset</span>
+<span class="n">dat_reg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_sav</span><span class="p">(</span><span class="s">&quot;/Users/macbook/Library/CloudStorage/GoogleDrive-tranquangthanhcong@gmail.com/My Drive/study/ueh master/multivariate/data/HOIQUIBOI.sav&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat_online</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 2 × 26</caption>
+<thead>
+	<tr><th scope=col>TT1</th><th scope=col>TT2</th><th scope=col>TT3</th><th scope=col>HH1</th><th scope=col>HH2</th><th scope=col>HH3</th><th scope=col>DV1</th><th scope=col>DV2</th><th scope=col>DV3</th><th scope=col>DV4</th><th scope=col>⋯</th><th scope=col>Nghe</th><th scope=col>Thu_nhap</th><th scope=col>Hoc_van</th><th scope=col>ctieums</th><th scope=col>X1</th><th scope=col>X3</th><th scope=col>Y</th><th scope=col>X2</th><th scope=col>CD_DH</th><th scope=col>chitieuMH</th></tr>
+	<tr><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th><th scope=col>&lt;dbl+lbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5</td><td>5</td><td>5</td><td>2</td><td>4</td><td>4</td><td>5</td><td>5</td><td>5</td><td>5</td><td>⋯</td><td>1</td><td>3</td><td>2</td><td>0.5</td><td>5.0</td><td>3.33</td><td>4.92</td><td>5</td><td>1</td><td>1</td></tr>
+	<tr><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td><td>3</td><td>3</td><td>3</td><td>4</td><td>⋯</td><td>1</td><td>2</td><td>2</td><td>1.0</td><td>3.4</td><td>4.00</td><td>3.80</td><td>4</td><td>1</td><td>2</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert value to factors (readable)</span>
+<span class="n">dat_fact_reg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as_label</span><span class="p">(</span><span class="n">dat_reg</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">as_factor</span><span class="p">()</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat_fact_reg</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 2 × 3</caption>
+<thead>
+	<tr><th scope=col>sluong</th><th scope=col>dgia</th><th scope=col>cphiqc</th></tr>
+	<tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>350</td><td>5.5</td><td>3.3</td></tr>
+	<tr><td>460</td><td>7.5</td><td>3.3</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<section id="scatter-plot">
+<h3>Scatter plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h3>
+<p>We can have a look on how the relationship variables is by plot a scatter chart. We can use a simple builtin function in R</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">par</span><span class="p">(</span><span class="n">bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">dat_reg</span><span class="o">$</span><span class="n">dgia</span><span class="p">,</span><span class="w"> </span><span class="n">dat_reg</span><span class="o">$</span><span class="n">cphiqc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/fe83edc21710e0444db48f48529efe9521b67f08abd166b872e1a0339b6e12b7.png"><img alt="_images/fe83edc21710e0444db48f48529efe9521b67f08abd166b872e1a0339b6e12b7.png" src="_images/fe83edc21710e0444db48f48529efe9521b67f08abd166b872e1a0339b6e12b7.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<p>or we can use ggplot2 which more options to adjust</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot scatter chart of dat_hoiquy for dgia and cphiquangcao</span>
+<span class="n">dat_reg</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dgia</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cphiqc</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;steelblue&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Scatter chart&quot;</span><span class="p">)</span>
+<span class="w">  </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/5bdfdd6ff96588e58bbe3ec6a2aba18b16683af83c7a758be07fbc414d8e9098.png"><img alt="_images/5bdfdd6ff96588e58bbe3ec6a2aba18b16683af83c7a758be07fbc414d8e9098.png" src="_images/5bdfdd6ff96588e58bbe3ec6a2aba18b16683af83c7a758be07fbc414d8e9098.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+</section>
+<section id="linear-model">
+<h3>Linear model<a class="headerlink" href="#linear-model" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># run linear regression with dependient is sluong and others is independent</span>
+<span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">sluong</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">dgia</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cphiqc</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat_reg</span><span class="p">)</span>
+<span class="nf">anova</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">kable</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s">&#39;pandoc&#39;</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="w"> </span>
+<span class="nf">stargazer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             Df   Sum Sq   Mean Sq   F value   Pr(&gt;F)
+----------  ---  -------  --------  --------  -------
+dgia          1    11100     11100      4.93    0.046
+cphiqc        1    18360     18360      8.15    0.014
+Residuals    12    27033      2253        NA       NA
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = sluong ~ dgia + cphiqc, data = dat_reg)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-63.80 -33.80  -9.09  17.18  96.15 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)    306.5      114.3    2.68    0.020 *
+dgia           -25.0       10.8   -2.31    0.040 *
+cphiqc          74.1       26.0    2.85    0.014 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 47.5 on 12 degrees of freedom
+Multiple R-squared:  0.521,	Adjusted R-squared:  0.442 
+F-statistic: 6.54 on 2 and 12 DF,  p-value: 0.012
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>===============================================
+                        Dependent variable:    
+                    ---------------------------
+                              sluong           
+-----------------------------------------------
+dgia                        -25.0000**         
+                             (10.8000)         
+                                               
+cphiqc                       74.1000**         
+                             (26.0000)         
+                                               
+Constant                    307.0000**         
+                            (114.0000)         
+                                               
+-----------------------------------------------
+Observations                    15             
+R2                            0.5210           
+Adjusted R2                   0.4420           
+Residual Std. Error      47.5000 (df = 12)     
+F Statistic            6.5400** (df = 2; 12)   
+===============================================
+Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># view model dubin watson</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">lmtest</span><span class="p">)</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">digits</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+<span class="nf">dwtest</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: zoo
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘zoo’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	Durbin-Watson test
+
+data:  model
+DW = 1.6831203, p-value = 0.3018732
+alternative hypothesis: true autocorrelation is greater than 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat_reg</span><span class="o">$</span><span class="n">resid</span><span class="o">&lt;-</span><span class="n">model</span><span class="o">$</span><span class="n">residuals</span>
+<span class="n">dat_reg</span><span class="o">$</span><span class="n">pred</span><span class="o">&lt;-</span><span class="n">model</span><span class="o">$</span><span class="n">fitted.values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">model</span><span class="o">$</span><span class="n">residuals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/ef2318bc9ee55044d7d466bed43228116886c65d554f91a7da38dad47f7e97ef.png"><img alt="_images/ef2318bc9ee55044d7d466bed43228116886c65d554f91a7da38dad47f7e97ef.png" src="_images/ef2318bc9ee55044d7d466bed43228116886c65d554f91a7da38dad47f7e97ef.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+<section id="normalization">
+<h4>normalization<a class="headerlink" href="#normalization" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat_reg</span><span class="o">$</span><span class="n">sluong_scale</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="n">dat_reg</span><span class="o">$</span><span class="n">sluong</span><span class="p">)</span>
+<span class="n">dat_reg</span><span class="o">$</span><span class="n">dgia_scale</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="n">dat_reg</span><span class="o">$</span><span class="n">dgia</span><span class="p">)</span>
+<span class="n">dat_reg</span><span class="o">$</span><span class="n">cphiqc_scale</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="n">dat_reg</span><span class="o">$</span><span class="n">cphiqc</span><span class="p">)</span>
+<span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">sluong_scale</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">dgia_scale</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cphiqc_scale</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat_reg</span><span class="p">)</span>
+<span class="nf">anova</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="nf">stargazer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A anova: 3 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Df</th><th scope=col>Sum Sq</th><th scope=col>Mean Sq</th><th scope=col>F value</th><th scope=col>Pr(&gt;F)</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>dgia_scale</th><td> 1</td><td>2.750875603</td><td>2.7508756035</td><td>4.927449645</td><td>0.04645635254</td></tr>
+	<tr><th scope=row>cphiqc_scale</th><td> 1</td><td>4.549815501</td><td>4.5498155009</td><td>8.149763933</td><td>0.01449362680</td></tr>
+	<tr><th scope=row>Residuals</th><td>12</td><td>6.699308896</td><td>0.5582757413</td><td>         NA</td><td>           NA</td></tr>
+</tbody>
+</table>
+</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = sluong_scale ~ dgia_scale + cphiqc_scale, data = dat_reg)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-1.0042793 -0.5320155 -0.1430723  0.2703761  1.5136884 
+
+Coefficients:
+                  Estimate    Std. Error  t value Pr(&gt;|t|)  
+(Intercept)   3.905180e-16  1.929207e-01  0.00000 1.000000  
+dgia_scale   -4.606330e-01  1.997844e-01 -2.30565 0.039788 *
+cphiqc_scale  5.703404e-01  1.997844e-01  2.85478 0.014494 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.7471785 on 12 degrees of freedom
+Multiple R-squared:  0.5214779,	Adjusted R-squared:  0.4417243 
+F-statistic: 6.538607 on 2 and 12 DF,  p-value: 0.01200637
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>===============================================
+                        Dependent variable:    
+                    ---------------------------
+                           sluong_scale        
+-----------------------------------------------
+dgia_scale                   -0.4606**         
+                             (0.1998)          
+                                               
+cphiqc_scale                 0.5703**          
+                             (0.1998)          
+                                               
+Constant                      0.0000           
+                             (0.1929)          
+                                               
+-----------------------------------------------
+Observations                    15             
+R2                            0.5215           
+Adjusted R2                   0.4417           
+Residual Std. Error      0.7472 (df = 12)      
+F Statistic            6.5386** (df = 2; 12)   
+===============================================
+Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat_reg</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sluong_scale</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resid</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;steelblue&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">model</span><span class="o">$</span><span class="n">residuals</span><span class="p">),</span><span class="w"> </span><span class="n">linetype</span><span class="o">=</span><span class="s">&quot;dashed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Scatter chart of dat_hoiquy for sluong_scale and residuals&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/e7a78ddfbe262d58bc3287dd19f20aa6de16971f7f122dddace67350871f91db.png"><img alt="_images/e7a78ddfbe262d58bc3287dd19f20aa6de16971f7f122dddace67350871f91db.png" src="_images/e7a78ddfbe262d58bc3287dd19f20aa6de16971f7f122dddace67350871f91db.png" style="width: 420px; height: 420px;" />
+</a>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="markdown.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Markdown Files</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="markdown-notebooks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-setup">General setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function">function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-and-process-data">Import and process data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">import data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-and-report-in-table">Group and report in table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot">Plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">Hypothesis testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bivariate-association">Bivariate (association)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-square-test">chi-square test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test">t-test</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quali-vs-quali">quali vs quali</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#anova">anova</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-analysis">Factor analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cronbach-alpha">Cronbach Alpha</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca">PCA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-model">Linear model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalization">normalization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
