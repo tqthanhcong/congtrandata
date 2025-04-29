@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "DA và researcher"
-date: 2020-01-27 23:45:13 -0400
+date: 2025-04-29 23:45:13 -0400
 background: '/img/posts/02.jpg'
 category: DA
 ---
