@@ -1,8 +1,8 @@
-const version = '20250427165629';
+const version = '20250429232856';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/2025/04/21/multivariate-r.html","/2025/04/19/multivariate-data-analysis-with-r.html","/da/2023/12/03/da-bai-toan.html","/categories/data-analysis","/ml/2020/01/30/prophecy.html","/da/2020/01/28/dreams.html","/ml/2020/01/27/dinosaurs.html","/about.html","/contact.html","/resume/cv_james.html","/posts/fn/","/posts/","/posts/skill/","/","/posts/ml/","/posts/da/","/resume/","/assets/main.css","/resumemarkdown.html","/resume/srt-resume.html","/feed.xml","/posts/page2/","/sitemap.xml","/robots.txt","/assets/main.css.map","/assets/logos/logo_dino.png", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/2025/04/21/multivariate-r.html","/da/2023/12/03/da-bai-toan.html","/da/2023/12/02/da-history.html","/da/2023/12/02/prophecy.html","/da/2020/01/28/dreams.html","/da/2020/01/27/da-hoc-thuat.html","/ml/2020/01/27/dinosaurs.html","/about.html","/contact.html","/resume/cv_james.html","/posts/fn/","/posts/","/posts/skill/","/","/posts/ml/","/posts/da/","/resume/","/assets/main.css","/resumemarkdown.html","/resume/srt-resume.html","/feed.xml","/posts/page2/","/sitemap.xml","/robots.txt","/assets/main.css.map","/assets/logos/logo_dino.png", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 
