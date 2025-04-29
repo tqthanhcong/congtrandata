@@ -7,7 +7,7 @@ background: '/img/posts/01.jpg'
 category: DA
 ---
 
-> *“Everything should be made as simple as possible, but not simpler.”*
+> *“Everything should be made as simple as possible, but not simpler.”* 
 > — Albert Einstein
 ---
 
