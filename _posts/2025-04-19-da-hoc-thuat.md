@@ -1,9 +1,8 @@
 ---
 layout: post
-title: "DA: học thuật vs thực chiến"
-subtitle: "Hành trình từ học thuật đến thực chiến: Làm sao để dữ liệu không chỉ đúng mà còn dễ hiểu và hành động được."
-date: 2025-04-29 23:45:13 -0400
-background: '/img/posts/01.jpg'
+title: "DA và researcher"
+date: 2020-01-27 23:45:13 -0400
+background: '/img/posts/02.jpg'
 category: DA
 ---
 
