@@ -276,142 +276,131 @@ Nếu chúng có tương quan, chúng có thể có quan hệ nhân quả hoặc
 
 <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
 
-<p>Placeholder text by <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by <a href="https://unsplash.com/">Unsplash</a>.</p>]]></content><author><name>Cong Tran</name></author><category term="ML" /><summary type="html"><![CDATA[Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.]]></summary></entry><entry><title type="html">DA: học thuật vs thực chiến</title><link href="https://tqthanhcong.github.io/da/2020/01/27/da-hoc-thuat.html" rel="alternate" type="text/html" title="DA: học thuật vs thực chiến" /><published>2020-01-27T10:45:13+07:00</published><updated>2020-01-27T10:45:13+07:00</updated><id>https://tqthanhcong.github.io/da/2020/01/27/da-hoc-thuat</id><content type="html" xml:base="https://tqthanhcong.github.io/da/2020/01/27/da-hoc-thuat.html"><![CDATA[<blockquote>
-  <p><em>“Everything should be made as simple as possible, but not simpler.”</em>
-— Albert Einstein
-—</p>
+<p>Placeholder text by <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by <a href="https://unsplash.com/">Unsplash</a>.</p>]]></content><author><name>Cong Tran</name></author><category term="ML" /><summary type="html"><![CDATA[Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.]]></summary></entry><entry><title type="html">DA và researcher</title><link href="https://tqthanhcong.github.io/da/2020/01/27/da-hoc-thuat.html" rel="alternate" type="text/html" title="DA và researcher" /><published>2020-01-27T10:45:13+07:00</published><updated>2020-01-27T10:45:13+07:00</updated><id>https://tqthanhcong.github.io/da/2020/01/27/da-hoc-thuat</id><content type="html" xml:base="https://tqthanhcong.github.io/da/2020/01/27/da-hoc-thuat.html"><![CDATA[<h1 id="từ-người-kể-chuyện-dễ-hiểu-đến-kẻ-đào-quá-sâu-—-và-bài-học-về-luật-chơi-của-data-analyst">Từ người kể chuyện dễ hiểu đến kẻ đào quá sâu — Và bài học về "luật chơi" của Data Analyst</h1>
+
+<blockquote>
+  <p><em>“Everything should be made as simple as possible, but not simpler.”</em> — Albert Einstein</p>
 </blockquote>
 
-<h2 id="hành-trình-từ-chàng-báo-cáo-viên-ngân-hàng-đến-kẻ-học-thuật-quá-đà--và-cú-tỉnh-ngộ-về-sức-mạnh-của-sự-dễ-hiểu">Hành trình từ chàng báo cáo viên ngân hàng, đến kẻ học thuật quá đà – và cú tỉnh ngộ về sức mạnh của sự dễ hiểu</h2>
+<h3 id="1-khởi-đầu-ở-ngân-hàng-nhịp-chậm-và-nỗi-lo-về-giả-định">1. Khởi đầu ở ngân hàng: Nhịp chậm và nỗi lo về giả định</h3>
 
-<p>Tôi bắt đầu sự nghiệp làm data analyst trong một ngân hàng. Mọi thứ ở đây diễn ra chậm và kỹ. Chúng tôi được kỳ vọng phải hiểu sâu về bản chất của từng chỉ số – đặc biệt là những chỉ số dùng trong quản lý tài chính và rủi ro như trong ALM (Asset-Liability Management).</p>
+<p>Tôi bắt đầu sự nghiệp Data Analyst trong một ngân hàng — nơi mọi thứ vận hành chậm rãi và đầy thận trọng. Ở đó, một báo cáo phân tích không cần đẹp, nhưng bắt buộc phải đúng. Chúng tôi có thể dành hàng giờ chỉ để tranh luận về giả định phía sau một chỉ số tài chính: <em>“Tại sao đoạn này dùng duration gap chứ không phải cash flow gap?”</em>, hay <em>“Chỉ số này có còn đúng khi mặt bằng lãi suất dịch chuyển?”</em></p>
 
-<p>Tôi còn nhớ có những buổi họp kéo dài chỉ để tranh luận: “Tại sao lại dùng duration gap thay vì cash flow gap?”, “Chỉ số này có phản ánh đúng thanh khoản thực sự không?”. Và chính ở môi trường ấy, tôi học được cách đặt câu hỏi đúng – không chỉ “chỉ số ra sao?” mà là “nó phản ánh điều gì?”, “nó được xây dựng trên giả định gì?”, “khi bối cảnh thay đổi, nó có còn đúng không?”. Đó là nền tảng đầu tiên của tôi – một nền tảng tuy chậm nhưng sâu sắc.</p>
-
-<p>Rồi tôi chuyển sang làm DA cho một công ty công nghệ. Mọi thứ ở đây nhanh hơn, áp lực hơn, và định hướng <em>business-driven</em> rõ rệt. Nhưng thật ngạc nhiên, tôi lại cảm thấy “vào form” rất nhanh. Những phân tích của tôi – vì rõ ràng, logic, dễ hiểu – được các team business rất đón nhận. Họ bảo tôi làm mọi thứ “dễ hiểu hơn bao giờ hết”. Tôi thấy vui. Tôi thấy mình hữu dụng.</p>
-
-<p>Nhưng rồi… cũng chính khi mọi thứ đang suôn sẻ, tôi bắt đầu nhận được một số feedback từ những người trong các team DA khác:<br />
-“Phân tích của bạn bias nhiều đó.”<br />
-“Bạn chưa kiểm soát được confounders.”<br />
-“Phải cẩn thận, vì correlation này chưa chắc causal.”</p>
-
-<p>Ban đầu tôi hơi phản ứng. Nhưng rồi, tôi nhớ mình từng nói những câu y chang như vậy với một đồng nghiệp trước đây – một người cũng rất giỏi nhưng làm mọi thứ quá “storytelling”, quá cảm tính. Lúc đó tôi từng nghĩ: “Làm vậy là misleading người khác.”</p>
-
-<p>Và thế là, tôi dừng lại và suy nghĩ nghiêm túc. Biết đâu họ đúng?</p>
-
-<p>Tôi bắt đầu tìm hiểu nghiêm túc về <strong>causal inference</strong>. Lúc đó, tôi như được mở mắt lần nữa. Tôi bị cuốn vào những khái niệm như selection bias, confounding, overcontrol, collider. Tôi đọc sách, đọc blog, đọc cả những thread dài lê thê trên Twitter. Rồi tôi biết đến DAGs, thấy chúng đẹp như sơ đồ tư duy cho những người thích đặt câu hỏi “vì sao”. Tôi học cách dùng <em>do-calculus</em>, đọc paper về propensity score, và thử nghiệm tất cả mọi thứ từ matching, inverse weighting, cho tới instrumental variables.</p>
-
-<p>Không dừng lại ở đó, tôi còn đăng ký học thạc sĩ ngành thống kê. Phần vì muốn hiểu sâu hơn, phần vì tôi bắt đầu cảm thấy… nghi ngờ chính mình. Phân tích của mình từ trước giờ có bias không? Mình có từng khiến ai ra quyết định sai không?</p>
-
-<p>Công ty lúc ấy cũng đang trong giai đoạn “chín” về mặt dữ liệu – họ bắt đầu quan tâm hơn tới những phân tích <em>causal</em>, những chiến lược dài hạn thay vì các insight mang tính ad-hoc. Tôi cảm thấy mình phù hợp hơn bao giờ hết. Tôi dành hàng giờ để viết memo, vẽ DAG, viết các cảnh báo về giả định, mô phỏng kết quả dưới các kịch bản sensitivity khác nhau.</p>
-
-<p>Nhưng rồi một ngày… tôi tỉnh ra.</p>
-
-<p>Tôi nhận được feedback từ chính team tôi:<br />
-“Bài phân tích này em làm công phu thật nhưng khó hiểu quá chị không dám action.”<br />
-“Chị đọc mà rối… em có thể tóm gọn giúp chị không?”<br />
-“Chị vẫn không rõ cuối cùng mình nên làm gì tiếp theo.”</p>
-
-<p>Cú đau nhất là khi một người chị hỏi tôi:<br />
-“Em có thể nói như lúc trước em vẫn hay nói không? Em từng làm mọi thứ dễ hiểu lắm mà.”<br />
-Và tôi nhận ra: mình đã đi quá xa.</p>
-
-<p>Tôi nhớ lại, ngày xưa tôi từng nói đúng những câu ấy với một đồng nghiệp – người làm rất mạnh về stats nhưng nói chuyện như viết luận án. Tôi từng nói với anh ấy rằng: “Insight mà người khác không hiểu, thì không còn là insight nữa.”</p>
-
-<p>Và giờ tôi đã trở thành phiên bản đó – một người nói toàn những khái niệm như ignorability assumption, identification strategy, sensitivity bounds… mà quên mất mình đang làm việc với những người không học stats như mình.</p>
-
-<p>Tôi nhận ra: <strong>tri thức mà không đi kèm sự dễ hiểu – thì nó không còn giá trị hành động</strong>.</p>
-
-<hr />
-
-<h2 id="researcher-và-data-analyst-cùng-là-phân-tích-nhưng-mục-tiêu-khác-nhau">Researcher và Data Analyst: cùng là phân tích, nhưng mục tiêu khác nhau</h2>
-
-<p>Tôi rút ra một điều sâu sắc: researcher và data analyst <em>làm việc khác nhau, vì sống trong hai thế giới khác nhau</em>.</p>
-
-<p><strong>Researcher</strong> sống trong thế giới của <em>chân lý</em> – tìm ra cái gì là đúng, bất kể tốn bao lâu.<br />
-<strong>Data analyst</strong> sống trong thế giới của <em>quyết định</em> – làm sao đủ đúng để dám làm tiếp, càng nhanh càng tốt.</p>
-
-<p>Trong giới học thuật, bạn sẽ được thưởng vì làm nghiên cứu chặt chẽ, mô hình đẹp, giả định rõ ràng, kết luận trung thực dù là “không có gì đáng kể”. Thậm chí nếu bạn chứng minh điều gì đó là “không causal”, bạn vẫn được công nhận – vì bạn làm đúng quy trình.</p>
-
-<p>Còn trong công ty? Nếu bạn mất 2 tuần để ra một báo cáo mà không ai hiểu, không ai dám dùng, thì công phu đến đâu cũng trở nên vô nghĩa.</p>
-
-<p><strong>Researcher được phép không ra quyết định. Data analyst thì không.</strong></p>
-
-<hr />
-
-<h2 id="vậy-một-data-analyst-nên-làm-gì-để-sống-sót-và-phát-triển">Vậy một data analyst nên làm gì để sống sót và phát triển?</h2>
+<p>Môi trường đó rèn cho tôi một nếp nghĩ căn bản: Phân tích dữ liệu không phải là nhìn vào con số rồi phán, mà là hiểu hệ thống tư tư tưởng đứng sau con số đó. Bất kỳ chỉ số nào xuất hiện cũng phải trả lời được ba câu hỏi:</p>
 
 <ol>
-  <li>
-    <p><strong>Học từ học thuật, nhưng không lậm học thuật</strong>. Biết bias là gì, biết causal là gì – nhưng cũng biết khi nào cần buông bỏ sự hoàn hảo để đưa ra hành động. Không phải cái gì cũng cần RCT.</p>
-  </li>
-  <li>
-    <p><strong>Kể chuyện giỏi như một người viết sách cho thiếu nhi</strong>. Nếu bạn không thể giải thích phân tích của mình cho một người bạn không học stats – bạn chưa thực sự hiểu nó. Và bạn sẽ không thay đổi được ai.</p>
-  </li>
-  <li>
-    <p><strong>Luôn hỏi: phân tích này giúp người ta ra quyết định gì?</strong> Nếu không giúp ai làm gì khác đi – thì dù kết quả có “đẹp” tới đâu, nó cũng không có giá trị trong thực tế.</p>
-  </li>
+
+  <li>Nó thực sự phản ánh điều gì?</li>
+
+  <li>Nó dựa trên những giả định nào?</li>
+
+  <li>Khi bối cảnh thay đổi, nó có còn đúng không?</li>
+
 </ol>
 
 <hr />
 
-<p>Vậy đó, tôi chia sẻ câu chuyện này như một lời tự nhắc: Hãy tiếp tục học, tiếp tục đào sâu. Nhưng đừng quên rằng, giá trị lớn nhất của dữ liệu – là khi nó được <strong>hiểu</strong>, <strong>tin</strong>, và <strong>dùng để hành động</strong>.</p>
+<h3 id="2-sang-công-ty-công-nghệ-lợi-thế-của-sự-dễ-hiểu">2. Sang công ty công nghệ: Lợi thế của sự "dễ hiểu"</h3>
 
-<p>Tuyệt, dưới đây là phần bổ sung — <strong>“Bí quyết để DA sống sót và phát triển vượt bậc trong công ty”</strong> — nối mạch logic và giọng văn từ bài trước:</p>
+<p>Chuyển sang làm ở một công ty công nghệ, nhịp làm việc thay đổi hẳn: nhanh hơn, thực dụng hơn và áp sát vào bài toán kinh doanh. Dù xuất phát điểm khác biệt, tôi lại thích nghi rất nhanh.</p>
 
-<hr />
+<p>Những bản phân tích của tôi — nhờ ngắn gọn, rõ ràng và mạch lạc — được các team kinh doanh đón nhận nhiệt tình. Phản hồi phổ biến nhất tôi nhận được là: <em>“Từ ngày có em, slide phân tích nhìn dễ hiểu hơn hẳn.”</em></p>
 
-<h2 id="bí-quyết-để-một-da-không-chỉ-sống-sót--mà-còn-phát-triển-vượt-bậc-trong-môi-trường-business">Bí quyết để một DA không chỉ sống sót – mà còn phát triển vượt bậc trong môi trường business</h2>
-
-<p>Sống sót là một chuyện. Nhưng để <strong>vượt trội</strong>, bạn cần hơn cả kỹ năng kỹ thuật. Dưới đây là những điều tôi học được – đôi khi là sau nhiều va vấp:</p>
-
-<h3 id="1-luôn-giữ-đầu-óc-hai-tầng">1. <strong>Luôn giữ đầu óc “hai tầng”</strong></h3>
-<p>Một tầng nghĩ như researcher: nghi ngờ, thận trọng, biết bias nằm ở đâu.<br />
-Tầng còn lại nghĩ như business: nếu là mình, mình có dám action không? Có thể simplify xuống mức nào? Cần kết luận nhanh cỡ nào?</p>
-
-<p><strong>Nghĩ cả hai tầng cùng lúc chính là đỉnh cao của một DA trưởng thành.</strong></p>
+<p>Tôi cảm thấy mình có giá trị. Và bắt đầu tin rằng <strong>“diễn giải dễ hiểu”</strong> chính là lợi thế cạnh tranh lớn nhất của mình.</p>
 
 <hr />
 
-<h3 id="2-biết-khi-nào-cần-chính-xác-khi-nào-cần-nhanh">2. <strong>Biết khi nào cần chính xác, khi nào cần nhanh</strong></h3>
-<p>Không phải phân tích nào cũng cần causal. Không phải phân tích nào cũng nên dùng mô hình machine learning. Quan trọng là biết:</p>
+<h3 id="3-cái-bẫy-sợ-sai-và-chặng-đường-sa-đà-vào-causal-inference">3. Cái bẫy "sợ sai" và chặng đường sa đà vào Causal Inference</h3>
+
+<p>Mọi chuyện bắt đầu thay đổi khi tôi nhận được phản hồi từ những bạn analyst khác trong team:</p>
+
 <ul>
-  <li>Bối cảnh này cần độ tin cậy bao nhiêu phần trăm?</li>
-  <li>Action là lớn hay nhỏ?</li>
-  <li>Rủi ro nếu sai là gì?</li>
+
+  <li><em>“Cái này bị bias nhiều lắm đó.”</em></li>
+
+  <li><em>“Em chưa kiểm soát được các yếu tố nhiễu (confounders).”</em></li>
+
+  <li><em>“Correlation này chưa chắc đã là Causal nha.”</em></li>
+
 </ul>
 
-<p><strong>Tài năng thật sự là biết chọn đúng công cụ cho đúng tình huống – không phải lúc nào cũng mang dao mổ trâu đi chém gà.</strong></p>
+<p>Ban đầu, tôi hơi dội. Nhưng rồi tôi khựng lại — vì chính tôi ngày xưa, hồi còn ở ngân hàng, cũng từng soi xét đồng nghiệp bằng những câu y hệt như thế. Tâm lý lo sợ trỗi dậy: <em>“Nếu không cẩn thận, mình sẽ đưa ra phân tích sai và làm người khác ra quyết định hỏng.”</em></p>
+
+<p>Tôi bắt đầu lao vào học Causal Inference một cách nghiêm túc. Không phải để đùa đòi theo trend, mà vì <strong>sợ</strong>. Tôi sợ mình vô tình bỏ qua một biến quan trọng nào đó.</p>
+
+<p>Tôi đọc về DAGs, collider, overcontrol, selection bias, do-calculus. Tôi đăng ký học Thạc sĩ Thống kê, đọc paper chuyên ngành, mày mò từ Propensity Score Matching đến Instrumental Variables (IV). Tôi không có ý định trở thành một researcher chuyên nghiệp; tôi chỉ đơn thuần không muốn trở thành kẻ đưa ra thông tin sai lệch.</p>
+
+<p>Đúng lúc đó, công ty bước vào giai đoạn “data maturity” — ban lãnh đạo bắt đầu đòi hỏi các phân tích bài bản, chặt chẽ, bớt cảm tính. Tôi tự thấy mình đang đi rất đúng hướng.</p>
 
 <hr />
 
-<h3 id="3-biết-lắng-nghe-và-dịch-vấn-đề">3. <strong>Biết lắng nghe và “dịch” vấn đề</strong></h3>
-<p>Người làm business sẽ không nói: “Tôi cần bạn chạy propensity score matching.”<br />
-Họ sẽ nói: “Tôi muốn biết cái chiến dịch này có tác động thật không hay là trùng hợp.”<br />
-Bạn cần học cách dịch yêu cầu – từ tiếng business sang tiếng dữ liệu, rồi từ kết quả dữ liệu ngược lại thành ngôn ngữ ra quyết định.</p>
+<h3 id="4-gáo-nước-lạnh-khi-sự-kỹ-lưỡng-trở-thành-rào-cản">4. Gáo nước lạnh: Khi sự kỹ lưỡng trở thành rào cản</h3>
 
-<p><strong>Bạn là người “thông dịch” giữa thế giới số và thế giới người. Làm tốt vai trò đó, bạn sẽ không bao giờ bị thay thế.</strong></p>
+<p>Cho đến một ngày, tôi nhận gáo nước lạnh từ một chị manager:</p>
 
-<hr />
-
-<h3 id="4-làm-sản-phẩm-không-chỉ-làm-slide">4. <strong>Làm sản phẩm, không chỉ làm slide</strong></h3>
-<p>Insight tốt là phải dùng được. Hãy nghĩ cách đóng gói phân tích của bạn thành:</p>
 <ul>
-  <li>Dashboard dùng hàng ngày</li>
-  <li>Alert tự động</li>
-  <li>Report định kỳ</li>
-  <li>Template để người khác tự phân tích sau này</li>
+
+  <li><em>“Em làm công phu thật, nhưng chị đọc xong không biết phải chốt thế nào.”</em></li>
+
+  <li><em>“Chiến dịch sắp chạy rồi, chị cần nhanh hơn. Tóm lại cho chị 3 gạch đầu dòng được không?”</em></li>
+
+  <li><em>“Em nói lại theo cách hồi xưa em hay nói đi. Hồi đó em giải thích dễ hiểu lắm mà.”</em></li>
+
 </ul>
 
-<p><strong>Khi bạn làm thứ người khác dùng được mà không cần bạn, lúc đó bạn thật sự có impact.</strong></p>
+<p>Tôi ngẩn người.</p>
+
+<p>Tôi nhận ra mình đã biến thành chính hình mẫu đồng nghiệp mà tôi từng không thích trước đây: một người quá academic, báo cáo lúc nào cũng dày đặc assumption, mô hình, trích dẫn, nhưng cuối cùng người cần dùng lại chẳng hiểu gì.</p>
+
+<p>Trong nỗi sợ làm người khác hiểu sai, tôi đã mắc một sai lầm căn bản hơn: <strong>nói bằng thứ ngôn ngữ mà không ai hiểu.</strong> Stakeholder không phải là Data Analyst. Họ không sống trong nỗi sợ bỏ sót confounder hay vi phạm giả định ignorability. Họ chỉ cần trả lời câu hỏi: <em>Có nên chạy tiếp chiến dịch này hay không?</em></p>
 
 <hr />
 
-<h3 id="5-cân-bằng-giữa-tư-duy-độc-lập-và-hợp-tác">5. <strong>Cân bằng giữa tư duy độc lập và hợp tác</strong></h3>
-<p>DA giỏi là người dám phản biện, dám đặt câu hỏi, không bị trôi theo hype. Nhưng đồng thời, cũng cần biết cách thuyết phục, cách nói chuyện để người khác muốn nghe, muốn hành động cùng mình.</p>
+<h3 id="5-mỗi-tổ-chức-một-luật-chơi-—-bài-học-cho-một-da-trưởng-thành">5. Mỗi tổ chức một "luật chơi" — Bài học cho một DA trưởng thành</h3>
 
-<p><strong>Không ai đi một mình tới đỉnh. Và không ai được nhớ tới nếu chỉ đúng một mình.</strong></p>
+<p>Chuyển sang công ty thứ ba — một môi trường vận hành cực nhanh, dữ liệu nhiều tầng lớp và quyết định phải đưa ra liên tục — tôi mới định hình rõ ràng: <strong>Không có một phương pháp phân tích "chuẩn mực" cho mọi tình huống.</strong> Mỗi tổ chức, mỗi giai đoạn đều có một "luật chơi" riêng.</p>
 
-<hr />
+<p>Dưới đây là những bài học tôi rút ra sau nhiều lần tự thấy mình sai:</p>
 
-<p>Bạn có muốn mình gom toàn bộ thành một bài hoàn chỉnh, chỉnh sửa lại cho mượt rồi đề xuất luôn tiêu đề, tagline, và hình ảnh minh họa cho bài đăng không?</p>]]></content><author><name>Cong Tran</name></author><category term="DA" /><summary type="html"><![CDATA[“Everything should be made as simple as possible, but not simpler.” — Albert Einstein —]]></summary></entry></feed>
+<h4 id="1-đừng-chỉ-giỏi-kỹ-thuật-hãy-giỏi-dịch-ngôn-ngữ">1. Đừng chỉ giỏi kỹ thuật, hãy giỏi "dịch ngôn ngữ"</h4>
+
+<p>Một chị Marketing Manager sẽ không bao giờ bảo bạn: <em>“Em chạy Inverse Probability Weighting để xử lý selection bias giùm chị.”</em><br />
+Chị ấy sẽ nói: <em>“Chị thấy nhóm A ngon hơn nhóm B, nhưng không biết có phải do chương trình khuyến mãi không. Em xem giùm chị.”</em></p>
+
+<p>Nhiệm vụ của bạn là dịch từ yêu cầu cảm tính đó sang bài toán dữ liệu, chạy phân tích, rồi dịch kết quả ngược lại thành một khuyến nghị đơn giản, dễ hành động. Người ta không thuê Data Analyst để chứng tỏ mình thông minh. Họ thuê bạn để giúp họ ra quyết định thông minh hơn.</p>
+
+<h4 id="2-học-từ-học-thuật-nhưng-đừng-lậm-học-thuật">2. Học từ học thuật, nhưng đừng "lậm" học thuật</h4>
+
+<p>Tôi từng mất hàng tuần để chỉnh một báo cáo vì phát hiện có nguy cơ dính collider bias. Nhưng thực tế là: trong bối cảnh chiến dịch đó, sai số do bias gây ra là rất nhỏ, còn việc trễ hạn báo cáo sẽ khiến họ ra quyết định hoàn toàn bằng cảm tính vì không thể chờ thêm.</p>
+
+<p>Làm DA không phải là vẽ một bản đồ địa lý chính xác đến từng milimet, mà là chỉ đường cho người khác đi đúng hướng — càng nhanh và rõ ràng càng tốt.</p>
+
+<h4 id="3-biết-chọn-trận-mà-đánh">3. Biết chọn "trận" mà đánh</h4>
+
+<ul>
+
+  <li>Có những bài toán đòi hỏi tư duy của một Researcher: sâu, chặt chẽ, kiểm tra giả định kỹ càng.</li>
+
+  <li>Có những bài toán chỉ cần phản ứng nhanh: gọn, rõ, chấp nhận sai số nhỏ để giữ tốc độ.</li>
+
+</ul>
+
+<p>Nếu business chỉ yêu cầu đánh giá hiệu quả của một đợt push notification trong 3 ngày, bạn không cần dựng mô hình Causal rườm rà. Một so sánh nhóm căn bản kết hợp vài bước kiểm tra logic (sanity check) là đủ để đưa ra lời khuyên. Sự trưởng thành nằm ở chỗ biết khi nào dùng súng lớn, khi nào chỉ cần dùng dao gọt trái cây.</p>
+
+<h4 id="4-luôn-tự-hỏi-nếu-là-mình-mình-có-dám-chốt-hạ-dựa-trên-slide-này-không">4. Luôn tự hỏi: "Nếu là mình, mình có dám chốt hạ dựa trên slide này không?"</h4>
+
+<p>Đặt mình vào vị trí của người ra quyết định sẽ giúp bạn biết cái gì cần làm rõ, cái gì thừa thãi, và kết quả hiện tại đã đủ thuyết phục để xuống tiền/xuống lực hay chưa.</p>
+
+<h4 id="5-định-vị-bản-thân-analyst-hay-researcher">5. Định vị bản thân: Analyst hay Researcher?</h4>
+
+<p>Thỉnh thoảng hãy tự hỏi: <em>“Ranh giới làm việc của mình tuần này đang thiên về Analyst hay Researcher?”</em></p>
+
+<ul>
+
+  <li>Nếu làm <strong>Analyst</strong> mà báo cáo viết như một bài báo nghiên cứu academic — bạn đang rời xa business.</li>
+
+  <li>Nếu làm <strong>Researcher</strong> mà phân tích hời hợt như một bài slide trình diễn — bạn đang làm sai vai.</li>
+
+</ul>
+
+<p>Giữ được sự cân bằng giữa <strong>độ sâu (rigor)</strong> và <strong>sự rõ ràng (clarity)</strong> chính là năng lực cốt lõi giúp một Data Analyst đi xa trong nghề.</p>]]></content><author><name>Cong Tran</name></author><category term="DA" /><summary type="html"><![CDATA[Từ người kể chuyện dễ hiểu đến kẻ đào quá sâu — Và bài học về "luật chơi" của Data Analyst]]></summary></entry></feed>
